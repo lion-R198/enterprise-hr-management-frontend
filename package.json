@@ -1,0 +1,31 @@
+{
+  "name": "enterprise-hr-management-frontend",
+  "version": "1.0.0",
+  "description": "企业人事管理系统前端（Vue3 + Element Plus + Vite），当前为 mock 数据通道，后续切换真实 API",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "audit:api": "node scripts/api-contract-audit.mjs",
+    "check:mock": "node scripts/check-mock-ctx.mjs",
+    "test:api": "node scripts/api-inventory.mjs && node scripts/check-mock-ctx.mjs && node scripts/api-contract-audit.mjs"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.7",
+    "echarts": "^5.5.1",
+    "element-plus": "^2.8.8",
+    "pinia": "^2.2.6",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "sass": "^1.80.6",
+    "vite": "^5.4.11"
+  }
+}

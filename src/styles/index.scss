@@ -1,0 +1,126 @@
+// ============================================================
+// 硬核企业风格 · 全局样式
+// 设计基调：深炭蓝侧边栏 + 高密度信息表格 + 强分隔线 + 单色强调
+// ============================================================
+
+:root {
+  // 品牌主色（工业蓝）
+  --ehr-primary: #0e5fd8;
+  // 侧边栏（深炭蓝）
+  --ehr-sidebar-bg: #16232e;
+  --ehr-sidebar-text: #9fb3c8;
+  --ehr-sidebar-active: #ffffff;
+  // 顶栏
+  --ehr-header-height: 50px;
+  // 边框与背景
+  --ehr-border: #d8dee6;
+  --ehr-bg-page: #f0f2f5;
+  --ehr-panel: #ffffff;
+  // 数值字体（工号/金额等关键数据使用等宽，硬核感 + 对齐）
+  --ehr-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 13px;
+  color: #24292f;
+  background: var(--ehr-bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+// ---------- 通用工具类 ----------
+.mono { font-family: var(--ehr-mono); }
+
+.text-muted { color: #8a94a0; }
+
+.page-container {
+  padding: 12px;
+}
+
+// ---------- 面板（硬核直角风格）----------
+.panel {
+  background: var(--ehr-panel);
+  border: 1px solid var(--ehr-border);
+  border-radius: 2px;
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--ehr-border);
+    background: #f7f9fb;
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1f2d3d;
+
+      &::before {
+        content: '';
+        width: 3px;
+        height: 14px;
+        background: var(--ehr-primary);
+      }
+    }
+  }
+
+  .panel-body { padding: 14px; }
+}
+
+// ---------- Element Plus 细节强化 ----------
+.el-table {
+  --el-table-border-color: var(--ehr-border);
+
+  th.el-table__cell {
+    background: #f7f9fb !important;
+    color: #1f2d3d;
+    font-weight: 600;
+  }
+}
+
+.el-dialog {
+  border-radius: 2px;
+  border: 1px solid var(--ehr-border);
+
+  .el-dialog__header {
+    border-bottom: 1px solid var(--ehr-border);
+    margin-right: 0;
+    padding: 14px 18px;
+    background: #f7f9fb;
+  }
+  .el-dialog__title { font-size: 14px; font-weight: 600; }
+}
+
+.el-card { border-radius: 2px; }
+
+// 侧边栏菜单（深色主题）
+.app-sidebar {
+  .el-menu {
+    border-right: none;
+    background: transparent;
+  }
+  .el-menu-item, .el-sub-menu__title {
+    color: var(--ehr-sidebar-text);
+    height: 42px;
+    line-height: 42px;
+
+    &:hover { background: rgba(255, 255, 255, 0.06); color: #d9e2ec; }
+  }
+  .el-menu-item.is-active {
+    background: var(--ehr-primary);
+    color: var(--ehr-sidebar-active);
+    border-right: 3px solid #c9a227;
+  }
+}

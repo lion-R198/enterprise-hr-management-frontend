@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>接口运行时测试（E2E）</title>
+  <style>
+    body { font-family: "Microsoft YaHei", system-ui, sans-serif; margin: 16px; color: #16232e; }
+    h1 { font-size: 18px; margin: 0 0 8px; }
+    .kpi { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+    .kpi div { border: 1px solid #d5dbe2; border-left: 3px solid #0e5fd8; padding: 6px 12px; font-size: 13px; }
+    .kpi b { font-family: Consolas, monospace; font-size: 16px; }
+    .ok { color: #1a7f37; }
+    .bad { color: #cf222e; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; }
+    th, td { border: 1px solid #d5dbe2; padding: 3px 6px; text-align: left; }
+    th { background: #eef2f7; }
+    code { font-family: Consolas, monospace; }
+    #apiresult { display: none; }
+  </style>
+</head>
+<body>
+  <h1>企业人事管理系统 · 接口运行时测试（E2E，mock 通道）</h1>
+  <div style="border:1px solid #d4a72c;border-left:4px solid #d4a72c;background:#fff8e5;padding:8px 12px;margin-bottom:12px;font-size:13px;line-height:1.7">
+    ⚠【本页已废弃，请勿用于验收】这是 mock 通道时期的旧测试台，判定口径与「所有前端请求必须调用后端接口」的现网要求不一致。<br />
+    请改用 <b>dev/joint-test.html</b>（91 条用例，客户端网络层探针 ∩ 服务端代理日志 双证据判定），执行器 <code>scripts/run-joint-test.mjs</code>，结果见 <code>verify/joint-result.json</code>。
+  </div>
+  <div id="kpi" class="kpi">运行中…</div>
+  <div id="table-wrap">运行中…</div>
+  <pre id="apiresult"></pre>
+  <script type="module" src="./api-test.js"></script>
+</body>
+</html>

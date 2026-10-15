@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>前后端联调测试（真实后端通道）</title>
+  <style>
+    body { font-family: "Microsoft YaHei", system-ui, sans-serif; margin: 16px; color: #16232e; background: #fff; }
+    h1 { font-size: 18px; margin: 0 0 4px; }
+    .sub { font-size: 12px; color: #5a6b7c; margin-bottom: 12px; line-height: 1.7; }
+    .kpi { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+    .kpi div { border: 1px solid #d5dbe2; border-left: 3px solid #0e5fd8; padding: 6px 12px; font-size: 13px; }
+    .kpi b { font-family: Consolas, monospace; font-size: 16px; }
+    .ok { color: #1a7f37; }
+    .bad { color: #cf222e; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; }
+    th, td { border: 1px solid #d5dbe2; padding: 3px 6px; text-align: left; vertical-align: top; }
+    th { background: #eef2f7; }
+    code { font-family: Consolas, monospace; }
+    #jointresult { display: none; }
+  </style>
+  <script>
+    /**
+     * 网络层探针：在业务模块加载前挂钩 XHR / fetch，逐条记录真实出行的方法与地址。
+     *
+     * 为什么不只靠 performance resource timing：
+     *   资源时序对「同一 URL 的重复请求 / 命中浏览器缓存」不重复记账，会把明明发出去了的
+     *   请求记成"未出行"，造成假阴性（把已联调成功的接口误判为走了 mock）。
+     *   直接在网络层挂钩可以精确、无遗漏地按用例归因。
+     */
+    (function () {
+      window.__NET__ = []
+      var push = function (method, url) {
+        window.__NET__.push({ method: String(method || 'GET').toUpperCase(), url: String(url), at: Date.now() })
+      }
+      var XO = XMLHttpRequest.prototype.open
+      XMLHttpRequest.prototype.open = function (method, url) {
+        try { this.__net = { method: method, url: url } } catch (e) { /* ignore */ }
+        return XO.apply(this, arguments)
+      }
+      var XS = XMLHttpRequest.prototype.send
+      XMLHttpRequest.prototype.send = function () {
+        if (this.__net) push(this.__net.method, this.__net.url)
+        return XS.apply(this, arguments)
+      }
+      var OF = window.fetch
+      if (OF) {
+        window.fetch = function (input, init) {
+          var url = typeof input === 'string' ? input : (input && input.url)
+          var method = (init && init.method) || (input && input.method) || 'GET'
+          push(method, url)
+          return OF.apply(this, arguments)
+        }
+      }
+    })()
+  </script>
+</head>
+<body>
+  <h1>企业人事管理系统 · 前后端联调测试（全部请求真实打到后端）</h1>
+  <div class="sub">
+    判定依据（双证据）：<br />
+    ① 客户端网络层探针记录到本条用例发出了真实 HTTP 请求（挂钩 XHR/fetch，mock 通道在 JS 内直接返回、不产生出行）；<br />
+    ② 服务端 <code>verify/proxy-access.jsonl</code> 存在同一 方法+路径 的代理落盘记录（证明请求经 vite 代理抵达后端进程）。
+  </div>
+  <div id="kpi" class="kpi">运行中…</div>
+  <div id="table-wrap">运行中…</div>
+  <pre id="jointresult"></pre>
+  <script type="module" src="./joint-test.js"></script>
+</body>
+</html>

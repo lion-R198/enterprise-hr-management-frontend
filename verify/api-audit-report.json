@@ -1,0 +1,5235 @@
+{
+  "generatedAt": "2026/9/15 15:38:20",
+  "schema": "D:/Workspace/enterprise-hr-management/enterprise_hr_schema.sql",
+  "useMock": true,
+  "summary": {
+    "endpoints": 91,
+    "tables": 49,
+    "tableCovered": 40,
+    "tableGap": 9,
+    "mockRoutes": 91,
+    "dangling": 0,
+    "redundant": 0,
+    "dictGroups": 49,
+    "runtimeTotal": 113,
+    "runtimePassed": 113,
+    "runtimeFailed": 0,
+    "ruleCases": 11
+  },
+  "endpoints": [
+    {
+      "seq": 1,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "getToday",
+      "name": "今日考勤状态（F-04-01）：GET /api/attendance/today",
+      "method": "GET",
+      "url": "/api/attendance/today",
+      "urlMock": "/attendance/today",
+      "args": "-",
+      "tables": [
+        "attendance_record",
+        "shift"
+      ],
+      "pages": [
+        "打卡签到 /attendance/checkin"
+      ],
+      "roles": [
+        "HR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-033",
+        "TC-108"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 2,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "checkin",
+      "name": "上班打卡：POST /api/attendance/checkin",
+      "method": "POST",
+      "url": "/api/attendance/checkin",
+      "urlMock": "/attendance/checkin",
+      "args": "-",
+      "tables": [
+        "attendance_record",
+        "shift"
+      ],
+      "pages": [
+        "打卡签到 /attendance/checkin"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-034"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 3,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "checkout",
+      "name": "下班打卡：POST /api/attendance/checkout",
+      "method": "POST",
+      "url": "/api/attendance/checkout",
+      "urlMock": "/attendance/checkout",
+      "args": "-",
+      "tables": [
+        "attendance_record",
+        "shift"
+      ],
+      "pages": [
+        "打卡签到 /attendance/checkin"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-035"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 4,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "pageAttendance",
+      "name": "我的打卡记录：GET /api/attendance/records",
+      "method": "GET",
+      "url": "/api/attendance/records",
+      "urlMock": "/attendance/records",
+      "args": "params",
+      "tables": [
+        "attendance_record",
+        "shift"
+      ],
+      "pages": [
+        "考勤统计 /attendance/monthly"
+      ],
+      "roles": [
+        "HR",
+        "MGR"
+      ],
+      "caseIds": [
+        "TC-036",
+        "TC-106"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 5,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "pageLeaveRequests",
+      "name": "请假分页（F-04-02）：GET /api/leave-requests/page",
+      "method": "GET",
+      "url": "/api/leave-requests/page",
+      "urlMock": "/leave-requests/page",
+      "args": "params",
+      "tables": [
+        "leave_request",
+        "leave_type",
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "roles": [
+        "HR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-037",
+        "TC-109"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 6,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "createLeaveRequest",
+      "name": "提交请假（BR-04-01 时间重叠校验在服务端）：POST /api/leave-requests",
+      "method": "POST",
+      "url": "/api/leave-requests",
+      "urlMock": "/leave-requests",
+      "args": "data",
+      "tables": [
+        "leave_request",
+        "leave_balance",
+        "leave_type",
+        "todo_task",
+        "approval_record"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-038",
+        "TC-039"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 7,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "approveLeaveRequest",
+      "name": "请假审批（直属主管→人事 审批链）：PUT /api/leave-requests/{id}/approve",
+      "method": "PUT",
+      "url": "/api/leave-requests/${id}/approve",
+      "urlMock": "/leave-requests/${id}/approve",
+      "args": "id, data",
+      "tables": [
+        "leave_request",
+        "approval_record",
+        "todo_task"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-040"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 8,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "getMyLeaveBalances",
+      "name": "我的假期余额（BR-04-02）：GET /api/leave-balances/my",
+      "method": "GET",
+      "url": "/api/leave-balances/my",
+      "urlMock": "/leave-balances/my",
+      "args": "-",
+      "tables": [
+        "leave_balance",
+        "leave_type"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-041"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 9,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "pageOvertimeRequests",
+      "name": "加班分页（F-04-03）：GET /api/overtime-requests/page",
+      "method": "GET",
+      "url": "/api/overtime-requests/page",
+      "urlMock": "/overtime-requests/page",
+      "args": "params",
+      "tables": [
+        "overtime_request",
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "加班申请 /attendance/overtime"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-042"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 10,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "createOvertimeRequest",
+      "name": "提交加班：POST /api/overtime-requests",
+      "method": "POST",
+      "url": "/api/overtime-requests",
+      "urlMock": "/overtime-requests",
+      "args": "data",
+      "tables": [
+        "overtime_request",
+        "todo_task"
+      ],
+      "pages": [
+        "加班申请 /attendance/overtime"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-043"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 11,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "approveOvertimeRequest",
+      "name": "加班审批：PUT /api/overtime-requests/{id}/approve",
+      "method": "PUT",
+      "url": "/api/overtime-requests/${id}/approve",
+      "urlMock": "/overtime-requests/${id}/approve",
+      "args": "id, data",
+      "tables": [
+        "overtime_request",
+        "approval_record"
+      ],
+      "pages": [
+        "加班申请 /attendance/overtime"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-044"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 12,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "pageTrips",
+      "name": "出差分页（F-04-04）：GET /api/business-trips/page",
+      "method": "GET",
+      "url": "/api/business-trips/page",
+      "urlMock": "/business-trips/page",
+      "args": "params",
+      "tables": [
+        "business_trip",
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "出差管理 /attendance/trip"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-045"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 13,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "createTrip",
+      "name": "提交出差：POST /api/business-trips",
+      "method": "POST",
+      "url": "/api/business-trips",
+      "urlMock": "/business-trips",
+      "args": "data",
+      "tables": [
+        "business_trip",
+        "todo_task"
+      ],
+      "pages": [
+        "出差管理 /attendance/trip"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-046"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 14,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "approveTrip",
+      "name": "出差审批：PUT /api/business-trips/{id}/approve",
+      "method": "PUT",
+      "url": "/api/business-trips/${id}/approve",
+      "urlMock": "/business-trips/${id}/approve",
+      "args": "id, data",
+      "tables": [
+        "business_trip",
+        "approval_record"
+      ],
+      "pages": [
+        "出差管理 /attendance/trip"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-047"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 15,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "pageAttendanceMonths",
+      "name": "考勤月报分页（F-04-06）：GET /api/attendance-months/page",
+      "method": "GET",
+      "url": "/api/attendance-months/page",
+      "urlMock": "/attendance-months/page",
+      "args": "params",
+      "tables": [
+        "attendance_month",
+        "employee"
+      ],
+      "pages": [
+        "考勤统计 /attendance/monthly"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-048"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 16,
+      "module": "考勤管理",
+      "section": "",
+      "file": "attendance.js",
+      "fn": "lockAttendanceMonth",
+      "name": "封账（BR-04-03 封账后禁改）：PUT /api/attendance-months/{id}/lock",
+      "method": "PUT",
+      "url": "/api/attendance-months/${id}/lock",
+      "urlMock": "/attendance-months/${id}/lock",
+      "args": "id",
+      "tables": [
+        "attendance_month"
+      ],
+      "pages": [
+        "考勤统计 /attendance/monthly"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-049"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 17,
+      "module": "认证",
+      "section": "",
+      "file": "auth.js",
+      "fn": "login",
+      "name": "登录：POST /api/auth/login",
+      "method": "POST",
+      "url": "/api/auth/login",
+      "urlMock": "/auth/login",
+      "args": "data",
+      "tables": [
+        "sys_user",
+        "sys_user_role",
+        "sys_role",
+        "sys_login_log"
+      ],
+      "pages": [
+        "登录页 /login"
+      ],
+      "roles": [
+        "GUEST",
+        "HR"
+      ],
+      "caseIds": [
+        "TC-001",
+        "TC-003"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 18,
+      "module": "认证",
+      "section": "",
+      "file": "auth.js",
+      "fn": "getInfo",
+      "name": "当前用户信息：GET /api/auth/me",
+      "method": "GET",
+      "url": "/api/auth/me",
+      "urlMock": "/auth/me",
+      "args": "-",
+      "tables": [
+        "sys_user",
+        "sys_user_role",
+        "sys_role",
+        "employee"
+      ],
+      "pages": [
+        "守卫 permission.js"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-002"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 19,
+      "module": "认证",
+      "section": "",
+      "file": "auth.js",
+      "fn": "logout",
+      "name": "退出登录：POST /api/auth/logout",
+      "method": "POST",
+      "url": "/api/auth/logout",
+      "urlMock": "/auth/logout",
+      "args": "-",
+      "tables": [
+        "sys_login_log"
+      ],
+      "pages": [
+        "布局退出登录"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-103"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 20,
+      "module": "首页看板",
+      "section": "",
+      "file": "dashboard.js",
+      "fn": "getSummary",
+      "name": "首页指标卡（按角色数据范围过滤 BR-01-01）：GET /api/dashboard/summary",
+      "method": "GET",
+      "url": "/api/dashboard/summary",
+      "urlMock": "/dashboard/summary",
+      "args": "-",
+      "tables": [
+        "employee",
+        "dept",
+        "attendance_record",
+        "todo_task",
+        "employee_contract"
+      ],
+      "pages": [
+        "首页 /dashboard"
+      ],
+      "roles": [
+        "HR",
+        "MGR"
+      ],
+      "caseIds": [
+        "TC-004",
+        "TC-104"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 21,
+      "module": "首页看板",
+      "section": "",
+      "file": "dashboard.js",
+      "fn": "getTodos",
+      "name": "待办事项（F-01-02）：GET /api/dashboard/todos",
+      "method": "GET",
+      "url": "/api/dashboard/todos",
+      "urlMock": "/dashboard/todos",
+      "args": "-",
+      "tables": [
+        "todo_task"
+      ],
+      "pages": [
+        "首页 /dashboard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-005"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 22,
+      "module": "首页看板",
+      "section": "",
+      "file": "dashboard.js",
+      "fn": "getNotices",
+      "name": "通知公告（F-01-03）：GET /api/dashboard/notices",
+      "method": "GET",
+      "url": "/api/dashboard/notices",
+      "urlMock": "/dashboard/notices",
+      "args": "-",
+      "tables": [
+        "notice",
+        "notice_read"
+      ],
+      "pages": [
+        "首页 /dashboard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-006"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 23,
+      "module": "首页看板",
+      "section": "",
+      "file": "dashboard.js",
+      "fn": "getCharts",
+      "name": "图表分析（F-01-04）：GET /api/dashboard/charts",
+      "method": "GET",
+      "url": "/api/dashboard/charts",
+      "urlMock": "/dashboard/charts",
+      "args": "-",
+      "tables": [
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "首页 /dashboard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-007"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 24,
+      "module": "首页看板",
+      "section": "",
+      "file": "dashboard.js",
+      "fn": "handleTodo",
+      "name": "处理待办：PUT /api/dashboard/todos/{id}/handle",
+      "method": "PUT",
+      "url": "/api/dashboard/todos/${id}/handle",
+      "urlMock": "/dashboard/todos/${id}/handle",
+      "args": "id, data",
+      "tables": [
+        "todo_task",
+        "approval_record"
+      ],
+      "pages": [
+        "首页 /dashboard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-008"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 25,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "getDeptTree",
+      "name": "组织架构树（F-03-01）：GET /api/depts/tree",
+      "method": "GET",
+      "url": "/api/depts/tree",
+      "urlMock": "/depts/tree",
+      "args": "-",
+      "tables": [
+        "dept",
+        "employee"
+      ],
+      "pages": [
+        "组织架构 /dept"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-023"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 26,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "getDepts",
+      "name": "部门列表（扁平）：GET /api/depts",
+      "method": "GET",
+      "url": "/api/depts",
+      "urlMock": "/depts",
+      "args": "-",
+      "tables": [
+        "dept"
+      ],
+      "pages": [
+        "组织架构 /dept"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-024"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 27,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "createDept",
+      "name": "新增部门（F-03-02）：POST /api/depts",
+      "method": "POST",
+      "url": "/api/depts",
+      "urlMock": "/depts",
+      "args": "data",
+      "tables": [
+        "dept"
+      ],
+      "pages": [
+        "组织架构 /dept"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-025"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 28,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "updateDept",
+      "name": "修改部门：PUT /api/depts/{id}",
+      "method": "PUT",
+      "url": "/api/depts/${id}",
+      "urlMock": "/depts/${id}",
+      "args": "id, data",
+      "tables": [
+        "dept"
+      ],
+      "pages": [
+        "组织架构 /dept"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-026"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 29,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "deleteDept",
+      "name": "删除部门（有在职员工时后端拒绝 BR-03-02）：DELETE /api/depts/{id}",
+      "method": "DELETE",
+      "url": "/api/depts/${id}",
+      "urlMock": "/depts/${id}",
+      "args": "id",
+      "tables": [
+        "dept",
+        "employee"
+      ],
+      "pages": [
+        "组织架构 /dept"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-027",
+        "TC-028",
+        "TC-029"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 30,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "getPositions",
+      "name": "岗位列表（F-03-03）：GET /api/positions",
+      "method": "GET",
+      "url": "/api/positions",
+      "urlMock": "/positions",
+      "args": "params",
+      "tables": [
+        "position",
+        "dept"
+      ],
+      "pages": [
+        "岗位管理 /dept/positions"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-030"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 31,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "createPosition",
+      "name": "新增岗位：POST /api/positions",
+      "method": "POST",
+      "url": "/api/positions",
+      "urlMock": "/positions",
+      "args": "data",
+      "tables": [
+        "position"
+      ],
+      "pages": [
+        "岗位管理 /dept/positions"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-031"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 32,
+      "module": "部门管理",
+      "section": "",
+      "file": "dept.js",
+      "fn": "updatePosition",
+      "name": "修改岗位：PUT /api/positions/{id}",
+      "method": "PUT",
+      "url": "/api/positions/${id}",
+      "urlMock": "/positions/${id}",
+      "args": "id, data",
+      "tables": [
+        "position"
+      ],
+      "pages": [
+        "岗位管理 /dept/positions"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-032"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 33,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "pageEmployees",
+      "name": "员工分页+多条件查询（F-02-06）：GET /api/employees/page",
+      "method": "GET",
+      "url": "/api/employees/page",
+      "urlMock": "/employees/page",
+      "args": "params",
+      "tables": [
+        "employee",
+        "dept",
+        "position"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR",
+        "MGR"
+      ],
+      "caseIds": [
+        "TC-009",
+        "TC-105"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 34,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "getEmployee",
+      "name": "员工详情：GET /api/employees/{id}",
+      "method": "GET",
+      "url": "/api/employees/${id}",
+      "urlMock": "/employees/${id}",
+      "args": "id",
+      "tables": [
+        "employee",
+        "dept",
+        "position"
+      ],
+      "pages": [
+        "员工档案 /employee",
+        "我的档案 /employee/profile"
+      ],
+      "roles": [
+        "HR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-010",
+        "TC-021",
+        "TC-022"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 35,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "createEmployee",
+      "name": "新增员工/入职办理（F-02-02）：POST /api/employees",
+      "method": "POST",
+      "url": "/api/employees",
+      "urlMock": "/employees",
+      "args": "data",
+      "tables": [
+        "employee",
+        "employee_change",
+        "sys_user"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-011"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 36,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "updateEmployee",
+      "name": "修改员工：PUT /api/employees/{id}",
+      "method": "PUT",
+      "url": "/api/employees/${id}",
+      "urlMock": "/employees/${id}",
+      "args": "id, data",
+      "tables": [
+        "employee",
+        "position"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-012"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 37,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "deleteEmployee",
+      "name": "删除员工（逻辑删除 BR-02-03）：DELETE /api/employees/{id}",
+      "method": "DELETE",
+      "url": "/api/employees/${id}",
+      "urlMock": "/employees/${id}",
+      "args": "id",
+      "tables": [
+        "employee"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-016"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 38,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "changeEmployeeStatus",
+      "name": "状态变更（离职/转正 BR-02-04）：PUT /api/employees/{id}/status",
+      "method": "PUT",
+      "url": "/api/employees/${id}/status",
+      "urlMock": "/employees/${id}/status",
+      "args": "id, data",
+      "tables": [
+        "employee",
+        "employee_change"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-013",
+        "TC-015"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 39,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "getEmployeeChanges",
+      "name": "异动记录（F-02-03）：GET /api/employees/{id}/changes",
+      "method": "GET",
+      "url": "/api/employees/${id}/changes",
+      "urlMock": "/employees/${id}/changes",
+      "args": "id",
+      "tables": [
+        "employee_change",
+        "dept",
+        "position"
+      ],
+      "pages": [
+        "员工档案 /employee"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-014"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 40,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "createChange",
+      "name": "办理异动（调岗/调部门/晋升）：POST /api/employee-changes",
+      "method": "POST",
+      "url": "/api/employee-changes",
+      "urlMock": "/employee-changes",
+      "args": "data",
+      "tables": [
+        "employee_change",
+        "employee",
+        "position"
+      ],
+      "pages": [
+        "异动记录 /employee/changes"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-018"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 41,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "pageChanges",
+      "name": "异动分页：GET /api/employee-changes/page",
+      "method": "GET",
+      "url": "/api/employee-changes/page",
+      "urlMock": "/employee-changes/page",
+      "args": "params",
+      "tables": [
+        "employee_change",
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "异动记录 /employee/changes"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-017"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 42,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "pageContracts",
+      "name": "合同列表（F-02-05）：GET /api/employee-contracts/page",
+      "method": "GET",
+      "url": "/api/employee-contracts/page",
+      "urlMock": "/employee-contracts/page",
+      "args": "params",
+      "tables": [
+        "employee_contract",
+        "employee"
+      ],
+      "pages": [
+        "合同管理 /employee/contracts"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-019"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 43,
+      "module": "员工档案",
+      "section": "",
+      "file": "employee.js",
+      "fn": "createContract",
+      "name": "签订/续签合同：POST /api/employee-contracts",
+      "method": "POST",
+      "url": "/api/employee-contracts",
+      "urlMock": "/employee-contracts",
+      "args": "data",
+      "tables": [
+        "employee_contract"
+      ],
+      "pages": [
+        "合同管理 /employee/contracts"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-020"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 44,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "pagePerfPlans",
+      "name": "考核方案分页（F-08-01）：GET /api/performance-plans/page",
+      "method": "GET",
+      "url": "/api/performance-plans/page",
+      "urlMock": "/performance-plans/page",
+      "args": "params",
+      "tables": [
+        "performance_plan",
+        "performance_indicator",
+        "performance_record"
+      ],
+      "pages": [
+        "考核方案 /performance/plan"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-075"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 45,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "createPerfPlan",
+      "name": "新增考核方案：POST /api/performance-plans",
+      "method": "POST",
+      "url": "/api/performance-plans",
+      "urlMock": "/performance-plans",
+      "args": "data",
+      "tables": [
+        "performance_plan",
+        "employee"
+      ],
+      "pages": [
+        "考核方案 /performance/plan"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-076"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 46,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "publishPerfPlan",
+      "name": "发布方案（进入评分中）：PUT /api/performance-plans/{id}/publish",
+      "method": "PUT",
+      "url": "/api/performance-plans/${id}/publish",
+      "urlMock": "/performance-plans/${id}/publish",
+      "args": "id",
+      "tables": [
+        "performance_plan",
+        "performance_record",
+        "employee"
+      ],
+      "pages": [
+        "考核方案 /performance/plan"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-077"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 47,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "pagePerfRecords",
+      "name": "考核记录分页（F-08-03 按数据范围过滤）：GET /api/performance-records/page",
+      "method": "GET",
+      "url": "/api/performance-records/page",
+      "urlMock": "/performance-records/page",
+      "args": "params",
+      "tables": [
+        "performance_record",
+        "performance_plan",
+        "employee"
+      ],
+      "pages": [
+        "绩效评分 /performance/record"
+      ],
+      "roles": [
+        "HR",
+        "MGR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-078",
+        "TC-107",
+        "TC-113"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 48,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "submitSelfScore",
+      "name": "员工自评：PUT /api/performance-records/{id}/self-score",
+      "method": "PUT",
+      "url": "/api/performance-records/${id}/self-score",
+      "urlMock": "/performance-records/${id}/self-score",
+      "args": "id, data",
+      "tables": [
+        "performance_record",
+        "performance_plan"
+      ],
+      "pages": [
+        "绩效评分 /performance/record"
+      ],
+      "roles": [
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-079"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 49,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "submitLeaderScore",
+      "name": "主管评分：PUT /api/performance-records/{id}/leader-score",
+      "method": "PUT",
+      "url": "/api/performance-records/${id}/leader-score",
+      "urlMock": "/performance-records/${id}/leader-score",
+      "args": "id, data",
+      "tables": [
+        "performance_record",
+        "performance_plan"
+      ],
+      "pages": [
+        "绩效评分 /performance/record"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-080"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 50,
+      "module": "绩效考核",
+      "section": "",
+      "file": "performance.js",
+      "fn": "confirmPerfRecord",
+      "name": "员工结果确认/申诉（BR-08-01）：PUT /api/performance-records/{id}/confirm",
+      "method": "PUT",
+      "url": "/api/performance-records/${id}/confirm",
+      "urlMock": "/performance-records/${id}/confirm",
+      "args": "id, data",
+      "tables": [
+        "performance_record",
+        "performance_interview"
+      ],
+      "pages": [
+        "绩效评分 /performance/record"
+      ],
+      "roles": [
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-081"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 51,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "pageRecruitRequests",
+      "name": "招聘需求分页（F-06-01）：GET /api/recruit-requests/page",
+      "method": "GET",
+      "url": "/api/recruit-requests/page",
+      "urlMock": "/recruit-requests/page",
+      "args": "params",
+      "tables": [
+        "recruit_request",
+        "dept",
+        "position",
+        "employee"
+      ],
+      "pages": [
+        "招聘需求 /recruit/request"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-060"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 52,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "createRecruitRequest",
+      "name": "提报招聘需求（主管提报 BR-06-02）：POST /api/recruit-requests",
+      "method": "POST",
+      "url": "/api/recruit-requests",
+      "urlMock": "/recruit-requests",
+      "args": "data",
+      "tables": [
+        "recruit_request",
+        "employee"
+      ],
+      "pages": [
+        "招聘需求 /recruit/request"
+      ],
+      "roles": [
+        "MGR"
+      ],
+      "caseIds": [
+        "TC-061"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 53,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "approveRecruitRequest",
+      "name": "需求审批：PUT /api/recruit-requests/{id}/approve",
+      "method": "PUT",
+      "url": "/api/recruit-requests/${id}/approve",
+      "urlMock": "/recruit-requests/${id}/approve",
+      "args": "id, data",
+      "tables": [
+        "recruit_request",
+        "approval_record"
+      ],
+      "pages": [
+        "招聘需求 /recruit/request"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-062"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 54,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "pageCandidates",
+      "name": "候选人分页（F-06-03）：GET /api/candidates/page",
+      "method": "GET",
+      "url": "/api/candidates/page",
+      "urlMock": "/candidates/page",
+      "args": "params",
+      "tables": [
+        "candidate",
+        "recruit_request"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-063"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 55,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "createCandidate",
+      "name": "录入候选人：POST /api/candidates",
+      "method": "POST",
+      "url": "/api/candidates",
+      "urlMock": "/candidates",
+      "args": "data",
+      "tables": [
+        "candidate"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-064"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 56,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "changeCandidateStage",
+      "name": "推进候选人阶段（BR-06-01 状态流转）：PUT /api/candidates/{id}/stage",
+      "method": "PUT",
+      "url": "/api/candidates/${id}/stage",
+      "urlMock": "/candidates/${id}/stage",
+      "args": "id, data",
+      "tables": [
+        "candidate"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-065"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 57,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "getInterviewRecords",
+      "name": "面试记录列表（F-06-04）：GET /api/interview-records",
+      "method": "GET",
+      "url": "/api/interview-records",
+      "urlMock": "/interview-records",
+      "args": "params",
+      "tables": [
+        "interview_record",
+        "candidate",
+        "employee"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-066"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 58,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "createInterviewRecord",
+      "name": "安排面试/录入评价：POST /api/interview-records",
+      "method": "POST",
+      "url": "/api/interview-records",
+      "urlMock": "/interview-records",
+      "args": "data",
+      "tables": [
+        "interview_record",
+        "candidate"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-067"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 59,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "pageOffers",
+      "name": "Offer 列表（F-06-05）：GET /api/offers/page",
+      "method": "GET",
+      "url": "/api/offers/page",
+      "urlMock": "/offers/page",
+      "args": "params",
+      "tables": [
+        "offer_record",
+        "candidate",
+        "recruit_request"
+      ],
+      "pages": [
+        "录用审批 /recruit/offer"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-068"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 60,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "sendOffer",
+      "name": "发送 Offer：PUT /api/offers/{id}/send",
+      "method": "PUT",
+      "url": "/api/offers/${id}/send",
+      "urlMock": "/offers/${id}/send",
+      "args": "id",
+      "tables": [
+        "offer_record"
+      ],
+      "pages": [
+        "录用审批 /recruit/offer"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-069"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 61,
+      "module": "招聘管理",
+      "section": "",
+      "file": "recruit.js",
+      "fn": "changeOfferStatus",
+      "name": "确认 Offer 结果：PUT /api/offers/{id}/status",
+      "method": "PUT",
+      "url": "/api/offers/${id}/status",
+      "urlMock": "/offers/${id}/status",
+      "args": "id, data",
+      "tables": [
+        "offer_record",
+        "candidate"
+      ],
+      "pages": [
+        "录用审批 /recruit/offer"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-070"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 62,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "pageSalaryStandards",
+      "name": "薪资标准分页（F-05-01）：GET /api/salary-standards/page",
+      "method": "GET",
+      "url": "/api/salary-standards/page",
+      "urlMock": "/salary-standards/page",
+      "args": "params",
+      "tables": [
+        "salary_standard"
+      ],
+      "pages": [
+        "薪资标准 /salary/standard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-050"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 63,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "createSalaryStandard",
+      "name": "新增薪资标准：POST /api/salary-standards",
+      "method": "POST",
+      "url": "/api/salary-standards",
+      "urlMock": "/salary-standards",
+      "args": "data",
+      "tables": [
+        "salary_standard"
+      ],
+      "pages": [
+        "薪资标准 /salary/standard"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-051"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 64,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "pageSalaryRecords",
+      "name": "薪资核算记录分页（F-05-02）：GET /api/salary-records/page",
+      "method": "GET",
+      "url": "/api/salary-records/page",
+      "urlMock": "/salary-records/page",
+      "args": "params",
+      "tables": [
+        "salary_record",
+        "employee",
+        "dept"
+      ],
+      "pages": [
+        "薪资核算 /salary/record"
+      ],
+      "roles": [
+        "HR",
+        "FIN"
+      ],
+      "caseIds": [
+        "TC-052",
+        "TC-059"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 65,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "calculateSalary",
+      "name": "发起月度核算（BR-05-02 考勤未封账禁止核算）：POST /api/salary-records/calculate",
+      "method": "POST",
+      "url": "/api/salary-records/calculate",
+      "urlMock": "/salary-records/calculate",
+      "args": "data",
+      "tables": [
+        "salary_record",
+        "employee",
+        "attendance_month"
+      ],
+      "pages": [
+        "薪资核算 /salary/record"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-053",
+        "TC-054"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 66,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "reviewSalaryRecord",
+      "name": "复核（BR-05-03 复核人≠核算人）：PUT /api/salary-records/{id}/review",
+      "method": "PUT",
+      "url": "/api/salary-records/${id}/review",
+      "urlMock": "/salary-records/${id}/review",
+      "args": "id",
+      "tables": [
+        "salary_record"
+      ],
+      "pages": [
+        "薪资核算 /salary/record"
+      ],
+      "roles": [
+        "FIN"
+      ],
+      "caseIds": [
+        "TC-055"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 67,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "paySalaryRecord",
+      "name": "发放（F-05-03）：PUT /api/salary-records/{id}/pay",
+      "method": "PUT",
+      "url": "/api/salary-records/${id}/pay",
+      "urlMock": "/salary-records/${id}/pay",
+      "args": "id, data",
+      "tables": [
+        "salary_record"
+      ],
+      "pages": [
+        "薪资核算 /salary/record"
+      ],
+      "roles": [
+        "FIN"
+      ],
+      "caseIds": [
+        "TC-056"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 68,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "getMyPayslips",
+      "name": "我的薪资条（F-05-06）：GET /api/salary/payslips/my",
+      "method": "GET",
+      "url": "/api/salary/payslips/my",
+      "urlMock": "/salary/payslips/my",
+      "args": "-",
+      "tables": [
+        "salary_record",
+        "employee"
+      ],
+      "pages": [
+        "我的薪资条 /salary/payslip"
+      ],
+      "roles": [
+        "HR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-057",
+        "TC-110"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 69,
+      "module": "薪资管理",
+      "section": "",
+      "file": "salary.js",
+      "fn": "getPayslipItems",
+      "name": "薪资条明细（salary_item）：GET /api/salary/payslips/{recordId}/items",
+      "method": "GET",
+      "url": "/api/salary/payslips/${recordId}/items",
+      "urlMock": "/salary/payslips/${recordId}/items",
+      "args": "recordId",
+      "tables": [
+        "salary_item",
+        "salary_record"
+      ],
+      "pages": [
+        "我的薪资条 /salary/payslip"
+      ],
+      "roles": [
+        "HR",
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-058",
+        "TC-111"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 70,
+      "module": "系统设置",
+      "section": "用户管理（F-09-01）",
+      "file": "system.js",
+      "fn": "pageSysUsers",
+      "name": "---------------- 用户管理（F-09-01） ----------------",
+      "method": "GET",
+      "url": "/api/sys/users/page",
+      "urlMock": "/sys/users/page",
+      "args": "params",
+      "tables": [
+        "sys_user",
+        "sys_user_role",
+        "sys_role",
+        "employee"
+      ],
+      "pages": [
+        "用户管理 /system/user"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-082"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 71,
+      "module": "系统设置",
+      "section": "用户管理（F-09-01）",
+      "file": "system.js",
+      "fn": "createSysUser",
+      "name": "用户管理（F-09-01） · createSysUser",
+      "method": "POST",
+      "url": "/api/sys/users",
+      "urlMock": "/sys/users",
+      "args": "data",
+      "tables": [
+        "sys_user",
+        "sys_user_role",
+        "employee"
+      ],
+      "pages": [
+        "用户管理 /system/user"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-083",
+        "TC-084"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 72,
+      "module": "系统设置",
+      "section": "用户管理（F-09-01）",
+      "file": "system.js",
+      "fn": "updateSysUser",
+      "name": "用户管理（F-09-01） · updateSysUser",
+      "method": "PUT",
+      "url": "/api/sys/users/${id}",
+      "urlMock": "/sys/users/${id}",
+      "args": "id, data",
+      "tables": [
+        "sys_user",
+        "sys_user_role"
+      ],
+      "pages": [
+        "用户管理 /system/user"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-085",
+        "TC-088"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 73,
+      "module": "系统设置",
+      "section": "用户管理（F-09-01）",
+      "file": "system.js",
+      "fn": "resetSysUserPassword",
+      "name": "用户管理（F-09-01） · resetSysUserPassword",
+      "method": "PUT",
+      "url": "/api/sys/users/${id}/password/reset",
+      "urlMock": "/sys/users/${id}/password/reset",
+      "args": "id",
+      "tables": [
+        "sys_user"
+      ],
+      "pages": [
+        "用户管理 /system/user"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-086"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 74,
+      "module": "系统设置",
+      "section": "用户管理（F-09-01）",
+      "file": "system.js",
+      "fn": "deleteSysUser",
+      "name": "用户管理（F-09-01） · deleteSysUser",
+      "method": "DELETE",
+      "url": "/api/sys/users/${id}",
+      "urlMock": "/sys/users/${id}",
+      "args": "id",
+      "tables": [
+        "sys_user",
+        "sys_user_role"
+      ],
+      "pages": [
+        "用户管理 /system/user"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-087"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 75,
+      "module": "系统设置",
+      "section": "角色权限（F-09-02）",
+      "file": "system.js",
+      "fn": "getRoles",
+      "name": "---------------- 角色权限（F-09-02） ----------------",
+      "method": "GET",
+      "url": "/api/sys/roles",
+      "urlMock": "/sys/roles",
+      "args": "params",
+      "tables": [
+        "sys_role"
+      ],
+      "pages": [
+        "角色权限 /system/role"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-089"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 76,
+      "module": "系统设置",
+      "section": "角色权限（F-09-02）",
+      "file": "system.js",
+      "fn": "createRole",
+      "name": "角色权限（F-09-02） · createRole",
+      "method": "POST",
+      "url": "/api/sys/roles",
+      "urlMock": "/sys/roles",
+      "args": "data",
+      "tables": [
+        "sys_role"
+      ],
+      "pages": [
+        "角色权限 /system/role"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-090"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 77,
+      "module": "系统设置",
+      "section": "角色权限（F-09-02）",
+      "file": "system.js",
+      "fn": "updateRole",
+      "name": "角色权限（F-09-02） · updateRole",
+      "method": "PUT",
+      "url": "/api/sys/roles/${id}",
+      "urlMock": "/sys/roles/${id}",
+      "args": "id, data",
+      "tables": [
+        "sys_role"
+      ],
+      "pages": [
+        "角色权限 /system/role"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-091"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 78,
+      "module": "系统设置",
+      "section": "数据字典（F-09-04）",
+      "file": "system.js",
+      "fn": "getDictTypes",
+      "name": "---------------- 数据字典（F-09-04） ----------------",
+      "method": "GET",
+      "url": "/api/sys/dict-types",
+      "urlMock": "/sys/dict-types",
+      "args": "-",
+      "tables": [
+        "sys_dict_type"
+      ],
+      "pages": [
+        "数据字典 /system/dict"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-092"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 79,
+      "module": "系统设置",
+      "section": "数据字典（F-09-04）",
+      "file": "system.js",
+      "fn": "getDictItems",
+      "name": "数据字典（F-09-04） · getDictItems",
+      "method": "GET",
+      "url": "/api/sys/dict-types/${typeId}/items",
+      "urlMock": "/sys/dict-types/${typeId}/items",
+      "args": "typeId",
+      "tables": [
+        "sys_dict_item",
+        "sys_dict_type"
+      ],
+      "pages": [
+        "数据字典 /system/dict"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-093"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 80,
+      "module": "系统设置",
+      "section": "参数配置（F-09-05）",
+      "file": "system.js",
+      "fn": "getConfigs",
+      "name": "---------------- 参数配置（F-09-05） ----------------",
+      "method": "GET",
+      "url": "/api/sys/configs",
+      "urlMock": "/sys/configs",
+      "args": "params",
+      "tables": [
+        "sys_config"
+      ],
+      "pages": [
+        "参数配置 /system/config"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-094"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 81,
+      "module": "系统设置",
+      "section": "参数配置（F-09-05）",
+      "file": "system.js",
+      "fn": "updateConfig",
+      "name": "参数配置（F-09-05） · updateConfig",
+      "method": "PUT",
+      "url": "/api/sys/configs/${id}",
+      "urlMock": "/sys/configs/${id}",
+      "args": "id, data",
+      "tables": [
+        "sys_config"
+      ],
+      "pages": [
+        "参数配置 /system/config"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-095",
+        "TC-096"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 82,
+      "module": "系统设置",
+      "section": "日志审计（F-09-06）",
+      "file": "system.js",
+      "fn": "pageLoginLogs",
+      "name": "---------------- 日志审计（F-09-06） ----------------",
+      "method": "GET",
+      "url": "/api/sys/logs/login",
+      "urlMock": "/sys/logs/login",
+      "args": "params",
+      "tables": [
+        "sys_login_log",
+        "sys_user"
+      ],
+      "pages": [
+        "日志审计 /system/log"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-097"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 83,
+      "module": "系统设置",
+      "section": "日志审计（F-09-06）",
+      "file": "system.js",
+      "fn": "pageOperLogs",
+      "name": "日志审计（F-09-06） · pageOperLogs",
+      "method": "GET",
+      "url": "/api/sys/logs/oper",
+      "urlMock": "/sys/logs/oper",
+      "args": "params",
+      "tables": [
+        "sys_oper_log",
+        "sys_user"
+      ],
+      "pages": [
+        "日志审计 /system/log"
+      ],
+      "roles": [
+        "ADMIN"
+      ],
+      "caseIds": [
+        "TC-098"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 84,
+      "module": "通知公告",
+      "section": "通知公告（F-01-03，管理端）",
+      "file": "system.js",
+      "fn": "pageNotices",
+      "name": "---------------- 通知公告（F-01-03，管理端） ----------------",
+      "method": "GET",
+      "url": "/api/notices/page",
+      "urlMock": "/notices/page",
+      "args": "params",
+      "tables": [
+        "notice",
+        "notice_read",
+        "employee"
+      ],
+      "pages": [
+        "通知公告 /notices"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-099"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 85,
+      "module": "通知公告",
+      "section": "通知公告（F-01-03，管理端）",
+      "file": "system.js",
+      "fn": "createNotice",
+      "name": "通知公告（F-01-03，管理端） · createNotice",
+      "method": "POST",
+      "url": "/api/notices",
+      "urlMock": "/notices",
+      "args": "data",
+      "tables": [
+        "notice",
+        "employee"
+      ],
+      "pages": [
+        "通知公告 /notices"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-100"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 86,
+      "module": "通知公告",
+      "section": "通知公告（F-01-03，管理端）",
+      "file": "system.js",
+      "fn": "publishNotice",
+      "name": "通知公告（F-01-03，管理端） · publishNotice",
+      "method": "PUT",
+      "url": "/api/notices/${id}/publish",
+      "urlMock": "/notices/${id}/publish",
+      "args": "id",
+      "tables": [
+        "notice"
+      ],
+      "pages": [
+        "通知公告 /notices"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-101"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 87,
+      "module": "通知公告",
+      "section": "通知公告（F-01-03，管理端）",
+      "file": "system.js",
+      "fn": "offlineNotice",
+      "name": "通知公告（F-01-03，管理端） · offlineNotice",
+      "method": "PUT",
+      "url": "/api/notices/${id}/offline",
+      "urlMock": "/notices/${id}/offline",
+      "args": "id",
+      "tables": [
+        "notice"
+      ],
+      "pages": [
+        "通知公告 /notices"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-102"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 88,
+      "module": "培训管理",
+      "section": "",
+      "file": "training.js",
+      "fn": "pageTrainingPlans",
+      "name": "培训计划分页（F-07-01）：GET /api/training-plans/page",
+      "method": "GET",
+      "url": "/api/training-plans/page",
+      "urlMock": "/training-plans/page",
+      "args": "params",
+      "tables": [
+        "training_plan",
+        "course",
+        "training_enroll"
+      ],
+      "pages": [
+        "培训计划 /training/plan"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-071"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 89,
+      "module": "培训管理",
+      "section": "",
+      "file": "training.js",
+      "fn": "createTrainingPlan",
+      "name": "新增培训计划：POST /api/training-plans",
+      "method": "POST",
+      "url": "/api/training-plans",
+      "urlMock": "/training-plans",
+      "args": "data",
+      "tables": [
+        "training_plan",
+        "employee"
+      ],
+      "pages": [
+        "培训计划 /training/plan"
+      ],
+      "roles": [
+        "HR"
+      ],
+      "caseIds": [
+        "TC-072"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 90,
+      "module": "培训管理",
+      "section": "",
+      "file": "training.js",
+      "fn": "enrollTraining",
+      "name": "报名（BR-07-01 满员自动关闭）：POST /api/training-plans/{id}/enroll",
+      "method": "POST",
+      "url": "/api/training-plans/${id}/enroll",
+      "urlMock": "/training-plans/${id}/enroll",
+      "args": "id",
+      "tables": [
+        "training_enroll",
+        "training_plan",
+        "course"
+      ],
+      "pages": [
+        "培训计划 /training/plan"
+      ],
+      "roles": [
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-073"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    },
+    {
+      "seq": 91,
+      "module": "培训管理",
+      "section": "",
+      "file": "training.js",
+      "fn": "getMyTraining",
+      "name": "我的培训档案（F-07-06 员工自助查看）：GET /api/training/my",
+      "method": "GET",
+      "url": "/api/training/my",
+      "urlMock": "/training/my",
+      "args": "-",
+      "tables": [
+        "training_record",
+        "training_enroll",
+        "training_plan"
+      ],
+      "pages": [
+        "我的培训 /training/my"
+      ],
+      "roles": [
+        "EMP"
+      ],
+      "caseIds": [
+        "TC-074",
+        "TC-112"
+      ],
+      "mockImplemented": true,
+      "runtimeTested": true,
+      "runtimePassed": true
+    }
+  ],
+  "tables": [
+    {
+      "name": "sys_dict_type",
+      "comment": "字典类型表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/sys/dict-types",
+        "GET /api/sys/dict-types/${typeId}/items"
+      ],
+      "pages": [
+        "数据字典 /system/dict"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_dict_item",
+      "comment": "字典项表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/sys/dict-types/${typeId}/items"
+      ],
+      "pages": [
+        "数据字典 /system/dict"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_menu",
+      "comment": "菜单权限表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "前端静态实现",
+      "note": "菜单权限由前端路由 meta.roles 矩阵静态定义（与需求 2.5 一致）；后端菜单管理接口（F-09-03）本期未对接"
+    },
+    {
+      "name": "sys_role",
+      "comment": "角色表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/auth/login",
+        "GET /api/auth/me",
+        "GET /api/sys/users/page",
+        "GET /api/sys/roles",
+        "POST /api/sys/roles",
+        "PUT /api/sys/roles/${id}"
+      ],
+      "pages": [
+        "登录页 /login",
+        "守卫 permission.js",
+        "用户管理 /system/user",
+        "角色权限 /system/role"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_config",
+      "comment": "系统参数表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/sys/configs",
+        "PUT /api/sys/configs/${id}"
+      ],
+      "pages": [
+        "参数配置 /system/config"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_login_log",
+      "comment": "登录日志表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/auth/login",
+        "POST /api/auth/logout",
+        "GET /api/sys/logs/login"
+      ],
+      "pages": [
+        "登录页 /login",
+        "布局退出登录",
+        "日志审计 /system/log"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_oper_log",
+      "comment": "操作日志表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/sys/logs/oper"
+      ],
+      "pages": [
+        "日志审计 /system/log"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "shift",
+      "comment": "班次定义表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/attendance/today",
+        "POST /api/attendance/checkin",
+        "POST /api/attendance/checkout",
+        "GET /api/attendance/records"
+      ],
+      "pages": [
+        "打卡签到 /attendance/checkin",
+        "考勤统计 /attendance/monthly"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "班次随 /api/attendance/today 返回；如需班次维护建议补 GET/POST /api/shifts"
+    },
+    {
+      "name": "leave_type",
+      "comment": "假别表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/leave-requests/page",
+        "POST /api/leave-requests",
+        "GET /api/leave-balances/my"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "假别随请假接口返回；如需维护建议补 GET /api/leave-types"
+    },
+    {
+      "name": "salary_standard",
+      "comment": "薪资标准模板表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/salary-standards/page",
+        "POST /api/salary-standards"
+      ],
+      "pages": [
+        "薪资标准 /salary/standard"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "dept",
+      "comment": "部门表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/leave-requests/page",
+        "GET /api/overtime-requests/page",
+        "GET /api/business-trips/page",
+        "GET /api/dashboard/summary",
+        "GET /api/dashboard/charts",
+        "GET /api/depts/tree",
+        "GET /api/depts",
+        "POST /api/depts",
+        "PUT /api/depts/${id}",
+        "DELETE /api/depts/${id}",
+        "GET /api/positions",
+        "GET /api/employees/page",
+        "GET /api/employees/${id}",
+        "GET /api/employees/${id}/changes",
+        "GET /api/employee-changes/page",
+        "GET /api/recruit-requests/page",
+        "GET /api/salary-records/page"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave",
+        "加班申请 /attendance/overtime",
+        "出差管理 /attendance/trip",
+        "首页 /dashboard",
+        "组织架构 /dept",
+        "岗位管理 /dept/positions",
+        "员工档案 /employee",
+        "我的档案 /employee/profile",
+        "异动记录 /employee/changes",
+        "招聘需求 /recruit/request",
+        "薪资核算 /salary/record"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "position",
+      "comment": "岗位表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/positions",
+        "POST /api/positions",
+        "PUT /api/positions/${id}",
+        "GET /api/employees/page",
+        "GET /api/employees/${id}",
+        "PUT /api/employees/${id}",
+        "GET /api/employees/${id}/changes",
+        "POST /api/employee-changes",
+        "GET /api/recruit-requests/page"
+      ],
+      "pages": [
+        "岗位管理 /dept/positions",
+        "员工档案 /employee",
+        "我的档案 /employee/profile",
+        "异动记录 /employee/changes",
+        "招聘需求 /recruit/request"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "employee",
+      "comment": "员工表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/leave-requests/page",
+        "GET /api/overtime-requests/page",
+        "GET /api/business-trips/page",
+        "GET /api/attendance-months/page",
+        "GET /api/auth/me",
+        "GET /api/dashboard/summary",
+        "GET /api/dashboard/charts",
+        "GET /api/depts/tree",
+        "DELETE /api/depts/${id}",
+        "GET /api/employees/page",
+        "GET /api/employees/${id}",
+        "POST /api/employees",
+        "PUT /api/employees/${id}",
+        "DELETE /api/employees/${id}",
+        "PUT /api/employees/${id}/status",
+        "POST /api/employee-changes",
+        "GET /api/employee-changes/page",
+        "GET /api/employee-contracts/page",
+        "POST /api/performance-plans",
+        "PUT /api/performance-plans/${id}/publish",
+        "GET /api/performance-records/page",
+        "GET /api/recruit-requests/page",
+        "POST /api/recruit-requests",
+        "GET /api/interview-records",
+        "GET /api/salary-records/page",
+        "POST /api/salary-records/calculate",
+        "GET /api/salary/payslips/my",
+        "GET /api/sys/users/page",
+        "POST /api/sys/users",
+        "GET /api/notices/page",
+        "POST /api/notices",
+        "POST /api/training-plans"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave",
+        "加班申请 /attendance/overtime",
+        "出差管理 /attendance/trip",
+        "考勤统计 /attendance/monthly",
+        "守卫 permission.js",
+        "首页 /dashboard",
+        "组织架构 /dept",
+        "员工档案 /employee",
+        "我的档案 /employee/profile",
+        "异动记录 /employee/changes",
+        "合同管理 /employee/contracts",
+        "考核方案 /performance/plan",
+        "绩效评分 /performance/record",
+        "招聘需求 /recruit/request",
+        "简历筛选 /recruit/candidate",
+        "薪资核算 /salary/record",
+        "我的薪资条 /salary/payslip",
+        "用户管理 /system/user",
+        "通知公告 /notices",
+        "培训计划 /training/plan"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "employee_contract",
+      "comment": "劳动合同表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/dashboard/summary",
+        "GET /api/employee-contracts/page",
+        "POST /api/employee-contracts"
+      ],
+      "pages": [
+        "首页 /dashboard",
+        "合同管理 /employee/contracts"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "employee_change",
+      "comment": "员工异动记录表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/employees",
+        "PUT /api/employees/${id}/status",
+        "GET /api/employees/${id}/changes",
+        "POST /api/employee-changes",
+        "GET /api/employee-changes/page"
+      ],
+      "pages": [
+        "员工档案 /employee",
+        "异动记录 /employee/changes"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "employee_attachment",
+      "comment": "员工附件表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "员工附件（证件/学历扫描件）建议补 POST /api/employees/{id}/attachments 与列表接口，页面支持上传"
+    },
+    {
+      "name": "sys_user",
+      "comment": "系统用户表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/auth/login",
+        "GET /api/auth/me",
+        "POST /api/employees",
+        "GET /api/sys/users/page",
+        "POST /api/sys/users",
+        "PUT /api/sys/users/${id}",
+        "PUT /api/sys/users/${id}/password/reset",
+        "DELETE /api/sys/users/${id}",
+        "GET /api/sys/logs/login",
+        "GET /api/sys/logs/oper"
+      ],
+      "pages": [
+        "登录页 /login",
+        "守卫 permission.js",
+        "员工档案 /employee",
+        "用户管理 /system/user",
+        "日志审计 /system/log"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "sys_user_role",
+      "comment": "用户角色关联表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/auth/login",
+        "GET /api/auth/me",
+        "GET /api/sys/users/page",
+        "POST /api/sys/users",
+        "PUT /api/sys/users/${id}",
+        "DELETE /api/sys/users/${id}"
+      ],
+      "pages": [
+        "登录页 /login",
+        "守卫 permission.js",
+        "用户管理 /system/user"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "用户角色随 /api/sys/users 与 /api/auth/me 的 roles 字段返回，无需独立接口"
+    },
+    {
+      "name": "sys_role_menu",
+      "comment": "角色菜单关联表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "角色-菜单授权建议补 GET/PUT /api/sys/roles/{id}/menus；当前角色页仅维护数据范围"
+    },
+    {
+      "name": "insurance_config",
+      "comment": "社保公积金配置表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "社保公积金配置当前在核算逻辑中按固定比例计算，未读取配置表；建议补 GET/PUT /api/insurance-configs 与社保管理页面（F-05-04）"
+    },
+    {
+      "name": "employee_salary",
+      "comment": "员工薪资标准表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "员工个人薪资标准建议补 GET/PUT /api/employees/{id}/salary（当前由核算接口按 employee.salary 计算）"
+    },
+    {
+      "name": "salary_record",
+      "comment": "月度薪资记录表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/salary-records/page",
+        "POST /api/salary-records/calculate",
+        "PUT /api/salary-records/${id}/review",
+        "PUT /api/salary-records/${id}/pay",
+        "GET /api/salary/payslips/my",
+        "GET /api/salary/payslips/${recordId}/items"
+      ],
+      "pages": [
+        "薪资核算 /salary/record",
+        "我的薪资条 /salary/payslip"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "salary_item",
+      "comment": "薪资明细项表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/salary/payslips/${recordId}/items"
+      ],
+      "pages": [
+        "我的薪资条 /salary/payslip"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "薪资明细随薪资条明细接口返回"
+    },
+    {
+      "name": "insurance_record",
+      "comment": "社保缴纳记录表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "社保缴纳记录无独立接口；建议随社保管理页补 GET /api/insurance-records"
+    },
+    {
+      "name": "leave_balance",
+      "comment": "假期余额表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/leave-requests",
+        "GET /api/leave-balances/my"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "attendance_record",
+      "comment": "考勤打卡记录表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/attendance/today",
+        "POST /api/attendance/checkin",
+        "POST /api/attendance/checkout",
+        "GET /api/attendance/records",
+        "GET /api/dashboard/summary"
+      ],
+      "pages": [
+        "打卡签到 /attendance/checkin",
+        "考勤统计 /attendance/monthly",
+        "首页 /dashboard"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "employee_schedule",
+      "comment": "员工排班表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "排班管理（F-04-05）建议补 GET/POST /api/employee-schedules 与排班页面"
+    },
+    {
+      "name": "leave_request",
+      "comment": "请假申请表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/leave-requests/page",
+        "POST /api/leave-requests",
+        "PUT /api/leave-requests/${id}/approve"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "overtime_request",
+      "comment": "加班申请表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/overtime-requests/page",
+        "POST /api/overtime-requests",
+        "PUT /api/overtime-requests/${id}/approve"
+      ],
+      "pages": [
+        "加班申请 /attendance/overtime"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "business_trip",
+      "comment": "出差申请表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/business-trips/page",
+        "POST /api/business-trips",
+        "PUT /api/business-trips/${id}/approve"
+      ],
+      "pages": [
+        "出差管理 /attendance/trip"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "attendance_month",
+      "comment": "考勤月报表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/attendance-months/page",
+        "PUT /api/attendance-months/${id}/lock",
+        "POST /api/salary-records/calculate"
+      ],
+      "pages": [
+        "考勤统计 /attendance/monthly",
+        "薪资核算 /salary/record"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "trainer",
+      "comment": "讲师表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "讲师表（training）无接口；mock 已备数据但未下发，建议补 GET/POST /api/trainers 或随培训计划返回"
+    },
+    {
+      "name": "recruit_request",
+      "comment": "招聘需求表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/recruit-requests/page",
+        "POST /api/recruit-requests",
+        "PUT /api/recruit-requests/${id}/approve",
+        "GET /api/candidates/page",
+        "GET /api/offers/page"
+      ],
+      "pages": [
+        "招聘需求 /recruit/request",
+        "简历筛选 /recruit/candidate",
+        "录用审批 /recruit/offer"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "job_posting",
+      "comment": "职位发布表",
+      "columns": 0,
+      "endpoints": [],
+      "pages": [],
+      "covered": false,
+      "status": "需补接口",
+      "note": "职位发布（F-06-02）建议补 GET/POST /api/job-postings，并与招聘需求联动"
+    },
+    {
+      "name": "candidate",
+      "comment": "候选人表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/candidates/page",
+        "POST /api/candidates",
+        "PUT /api/candidates/${id}/stage",
+        "GET /api/interview-records",
+        "POST /api/interview-records",
+        "GET /api/offers/page",
+        "PUT /api/offers/${id}/status"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate",
+        "录用审批 /recruit/offer"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "interview_record",
+      "comment": "面试记录表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/interview-records",
+        "POST /api/interview-records"
+      ],
+      "pages": [
+        "简历筛选 /recruit/candidate"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "offer_record",
+      "comment": "录用通知表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/offers/page",
+        "PUT /api/offers/${id}/send",
+        "PUT /api/offers/${id}/status"
+      ],
+      "pages": [
+        "录用审批 /recruit/offer"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "training_plan",
+      "comment": "培训计划表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/training-plans/page",
+        "POST /api/training-plans",
+        "POST /api/training-plans/${id}/enroll",
+        "GET /api/training/my"
+      ],
+      "pages": [
+        "培训计划 /training/plan",
+        "我的培训 /training/my"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "course",
+      "comment": "课程表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/training-plans/page",
+        "POST /api/training-plans/${id}/enroll"
+      ],
+      "pages": [
+        "培训计划 /training/plan"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "课程随培训计划接口返回"
+    },
+    {
+      "name": "training_enroll",
+      "comment": "培训报名表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/training-plans/page",
+        "POST /api/training-plans/${id}/enroll",
+        "GET /api/training/my"
+      ],
+      "pages": [
+        "培训计划 /training/plan",
+        "我的培训 /training/my"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "training_record",
+      "comment": "培训档案表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/training/my"
+      ],
+      "pages": [
+        "我的培训 /training/my"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "performance_plan",
+      "comment": "考核方案表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/performance-plans/page",
+        "POST /api/performance-plans",
+        "PUT /api/performance-plans/${id}/publish",
+        "GET /api/performance-records/page",
+        "PUT /api/performance-records/${id}/self-score",
+        "PUT /api/performance-records/${id}/leader-score"
+      ],
+      "pages": [
+        "考核方案 /performance/plan",
+        "绩效评分 /performance/record"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "performance_indicator",
+      "comment": "考核指标表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/performance-plans/page"
+      ],
+      "pages": [
+        "考核方案 /performance/plan"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "考核指标随考核方案接口返回；如需维护建议补 GET/POST /api/performance-indicators"
+    },
+    {
+      "name": "performance_record",
+      "comment": "绩效考核记录表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/performance-plans/page",
+        "PUT /api/performance-plans/${id}/publish",
+        "GET /api/performance-records/page",
+        "PUT /api/performance-records/${id}/self-score",
+        "PUT /api/performance-records/${id}/leader-score",
+        "PUT /api/performance-records/${id}/confirm"
+      ],
+      "pages": [
+        "考核方案 /performance/plan",
+        "绩效评分 /performance/record"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "performance_interview",
+      "comment": "绩效面谈记录表",
+      "columns": 0,
+      "endpoints": [
+        "PUT /api/performance-records/${id}/confirm"
+      ],
+      "pages": [
+        "绩效评分 /performance/record"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "notice",
+      "comment": "通知公告表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/dashboard/notices",
+        "GET /api/notices/page",
+        "POST /api/notices",
+        "PUT /api/notices/${id}/publish",
+        "PUT /api/notices/${id}/offline"
+      ],
+      "pages": [
+        "首页 /dashboard",
+        "通知公告 /notices"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "notice_read",
+      "comment": "公告已读记录表",
+      "columns": 0,
+      "endpoints": [
+        "GET /api/dashboard/notices",
+        "GET /api/notices/page"
+      ],
+      "pages": [
+        "首页 /dashboard",
+        "通知公告 /notices"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "公告已读由 read_count / 已读记录联表返回，如需\"已读/未读\"标记建议补 GET /api/notices/{id}/reads"
+    },
+    {
+      "name": "todo_task",
+      "comment": "待办任务表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/leave-requests",
+        "PUT /api/leave-requests/${id}/approve",
+        "POST /api/overtime-requests",
+        "POST /api/business-trips",
+        "GET /api/dashboard/summary",
+        "GET /api/dashboard/todos",
+        "PUT /api/dashboard/todos/${id}/handle"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave",
+        "加班申请 /attendance/overtime",
+        "出差管理 /attendance/trip",
+        "首页 /dashboard"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    },
+    {
+      "name": "approval_record",
+      "comment": "通用审批记录表",
+      "columns": 0,
+      "endpoints": [
+        "POST /api/leave-requests",
+        "PUT /api/leave-requests/${id}/approve",
+        "PUT /api/overtime-requests/${id}/approve",
+        "PUT /api/business-trips/${id}/approve",
+        "PUT /api/dashboard/todos/${id}/handle",
+        "PUT /api/recruit-requests/${id}/approve"
+      ],
+      "pages": [
+        "请假申请 /attendance/leave",
+        "加班申请 /attendance/overtime",
+        "出差管理 /attendance/trip",
+        "首页 /dashboard",
+        "招聘需求 /recruit/request"
+      ],
+      "covered": true,
+      "status": "已覆盖",
+      "note": "由上述接口直接供给"
+    }
+  ],
+  "configLocal": [
+    {
+      "item": "src/dict/index.js",
+      "type": "业务字典",
+      "count": "49 组",
+      "stay": "允许留在前端",
+      "reason": "与 DB 字段 COMMENT 同源（commonStatus、gender、employeeStatus、employeeType、education、maritalStatus、politicalStatus、deptType…），枚举文案/标签色属展示层规则；后端接通后可改为 /api/sys/dict-types 下发与字典表对齐",
+      "endpoint": "GET /api/sys/dict-types · GET /api/sys/dict-types/{id}/items（管理端已实现，业务页暂用本地字典）"
+    },
+    {
+      "item": "src/settings.js",
+      "type": "系统常量",
+      "count": "演示账号 5 条 + 标题/预警天数",
+      "stay": "允许留在前端",
+      "reason": "标题为 UI 配置；演示账号仅 mock 通道使用；合同到期预警天数属展示层兜底（与 sys_config 同步）",
+      "endpoint": "GET /api/sys/configs（管理端已实现）"
+    },
+    {
+      "item": "src/utils/format.js",
+      "type": "展示层规则",
+      "count": "6 个函数",
+      "stay": "允许留在前端",
+      "reason": "金额千分位/日期格式/脱敏展示属展示层；数据层（mock 的 empVO 与后端 VO）已同步脱敏，避免仅靠前端遮蔽",
+      "endpoint": "—（非数据来源）"
+    },
+    {
+      "item": "src/router/routes.js",
+      "type": "路由/权限矩阵",
+      "count": "9 个模块",
+      "stay": "允许留在前端",
+      "reason": "路由与 meta.roles 与需求 2.5 权限矩阵一致；菜单权限表（sys_menu）本期由前端静态定义，后端菜单管理未对接",
+      "endpoint": "—（建议后续对接 GET /api/sys/menus）"
+    },
+    {
+      "item": "src/mock/db.js",
+      "type": "模拟数据",
+      "count": "49 张表映射数据集",
+      "stay": "仅开发环境",
+      "reason": "VITE_USE_MOCK=true 时生效；生产构建 .env.production 已置为 false，切换真实 API 无需改动业务代码",
+      "endpoint": "全部 91 个请求地址"
+    }
+  ],
+  "runtime": {
+    "generatedAt": "2026/9/15 14:37:24",
+    "useMock": true,
+    "total": 113,
+    "passed": 113,
+    "failed": 0
+  },
+  "runtimeCases": [
+    {
+      "id": "TC-001",
+      "module": "认证",
+      "page": "登录页 /login",
+      "role": "GUEST",
+      "name": "登录（签发令牌）",
+      "method": "POST",
+      "url": "/api/auth/login",
+      "tables": "sys_user,sys_user_role,sys_role,sys_login_log",
+      "status": "通过",
+      "ok": true,
+      "ms": 237,
+      "message": "",
+      "sample": "2 字段：token,user"
+    },
+    {
+      "id": "TC-002",
+      "module": "认证",
+      "page": "守卫 permission.js",
+      "role": "HR",
+      "name": "当前登录用户信息",
+      "method": "GET",
+      "url": "/api/auth/me",
+      "tables": "sys_user,sys_user_role,sys_role",
+      "status": "通过",
+      "ok": true,
+      "ms": 290,
+      "message": "",
+      "sample": "7 字段：id,username,realName,employeeId,deptId,roles"
+    },
+    {
+      "id": "TC-003",
+      "module": "认证",
+      "page": "登录页 /login",
+      "role": "HR",
+      "name": "密码错误应被拒绝",
+      "method": "POST",
+      "url": "/api/auth/login",
+      "tables": "sys_user",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 341,
+      "message": "用户名或密码错误",
+      "sample": ""
+    },
+    {
+      "id": "TC-004",
+      "module": "首页看板",
+      "page": "首页 /dashboard",
+      "role": "HR",
+      "name": "指标卡（全量数据范围）",
+      "method": "GET",
+      "url": "/api/dashboard/summary",
+      "tables": "employee,dept,attendance_record,todo_task,employee_contract",
+      "status": "通过",
+      "ok": true,
+      "ms": 289,
+      "message": "",
+      "sample": "8 字段：totalEmployees,monthHired,monthLeft,deptCount,headcountLimit,attendanceAbnormal"
+    },
+    {
+      "id": "TC-005",
+      "module": "首页看板",
+      "page": "首页 /dashboard",
+      "role": "HR",
+      "name": "待办事项",
+      "method": "GET",
+      "url": "/api/dashboard/todos",
+      "tables": "todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 330,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-006",
+      "module": "首页看板",
+      "page": "首页 /dashboard",
+      "role": "HR",
+      "name": "通知公告（看板）",
+      "method": "GET",
+      "url": "/api/dashboard/notices",
+      "tables": "notice,notice_read",
+      "status": "通过",
+      "ok": true,
+      "ms": 266,
+      "message": "",
+      "sample": "total=5, records=5"
+    },
+    {
+      "id": "TC-007",
+      "module": "首页看板",
+      "page": "首页 /dashboard",
+      "role": "HR",
+      "name": "图表分析（折线/环形）",
+      "method": "GET",
+      "url": "/api/dashboard/charts",
+      "tables": "employee,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 250,
+      "message": "",
+      "sample": "3 字段：deptDistribution,trend,perfGrades"
+    },
+    {
+      "id": "TC-008",
+      "module": "首页看板",
+      "page": "首页 /dashboard",
+      "role": "HR",
+      "name": "处理待办",
+      "method": "PUT",
+      "url": "/api/dashboard/todos/:id/handle",
+      "tables": "todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 249,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-009",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "员工分页查询（hr 全量）",
+      "method": "GET",
+      "url": "/api/employees/page",
+      "tables": "employee,dept,position",
+      "status": "通过",
+      "ok": true,
+      "ms": 247,
+      "message": "",
+      "sample": "total=36, records=10"
+    },
+    {
+      "id": "TC-010",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "员工详情（脱敏）",
+      "method": "GET",
+      "url": "/api/employees/:id",
+      "tables": "employee,dept,position",
+      "status": "通过",
+      "ok": true,
+      "ms": 222,
+      "message": "",
+      "sample": "36 字段：id,emp_no,name,gender,age,birth_date"
+    },
+    {
+      "id": "TC-011",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "入职办理（工号自动生成 BR-02-01）",
+      "method": "POST",
+      "url": "/api/employees",
+      "tables": "employee,employee_change,sys_user",
+      "status": "通过",
+      "ok": true,
+      "ms": 242,
+      "message": "",
+      "sample": "2 字段：id,empNo"
+    },
+    {
+      "id": "TC-012",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "修改员工信息",
+      "method": "PUT",
+      "url": "/api/employees/:id",
+      "tables": "employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 235,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-013",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "状态变更-转正（BR-02-04 留痕）",
+      "method": "PUT",
+      "url": "/api/employees/:id/status",
+      "tables": "employee,employee_change",
+      "status": "通过",
+      "ok": true,
+      "ms": 399,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-014",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "员工异动记录（时间线）",
+      "method": "GET",
+      "url": "/api/employees/:id/changes",
+      "tables": "employee_change,dept,position",
+      "status": "通过",
+      "ok": true,
+      "ms": 213,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-015",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "状态变更-离职",
+      "method": "PUT",
+      "url": "/api/employees/:id/status",
+      "tables": "employee,employee_change",
+      "status": "通过",
+      "ok": true,
+      "ms": 229,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-016",
+      "module": "员工档案",
+      "page": "员工档案 /employee",
+      "role": "HR",
+      "name": "删除员工（逻辑删除 BR-02-03）",
+      "method": "DELETE",
+      "url": "/api/employees/:id",
+      "tables": "employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 377,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-017",
+      "module": "员工档案",
+      "page": "异动记录 /employee/changes",
+      "role": "HR",
+      "name": "异动分页",
+      "method": "GET",
+      "url": "/api/employee-changes/page",
+      "tables": "employee_change,employee,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 276,
+      "message": "",
+      "sample": "total=7, records=7"
+    },
+    {
+      "id": "TC-018",
+      "module": "员工档案",
+      "page": "异动记录 /employee/changes",
+      "role": "HR",
+      "name": "办理异动（调岗）",
+      "method": "POST",
+      "url": "/api/employee-changes",
+      "tables": "employee_change,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 218,
+      "message": "",
+      "sample": "success=true id=100004"
+    },
+    {
+      "id": "TC-019",
+      "module": "员工档案",
+      "page": "合同管理 /employee/contracts",
+      "role": "HR",
+      "name": "合同分页（到期预警）",
+      "method": "GET",
+      "url": "/api/employee-contracts/page",
+      "tables": "employee_contract,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 299,
+      "message": "",
+      "sample": "total=10, records=10"
+    },
+    {
+      "id": "TC-020",
+      "module": "员工档案",
+      "page": "合同管理 /employee/contracts",
+      "role": "HR",
+      "name": "签订合同",
+      "method": "POST",
+      "url": "/api/employee-contracts",
+      "tables": "employee_contract",
+      "status": "通过",
+      "ok": true,
+      "ms": 388,
+      "message": "",
+      "sample": "success=true id=100005 contractNo=CT20260006"
+    },
+    {
+      "id": "TC-021",
+      "module": "员工档案",
+      "page": "我的档案 /employee/profile",
+      "role": "EMP",
+      "name": "查看本人档案（行级隔离）",
+      "method": "GET",
+      "url": "/api/employees/:id",
+      "tables": "employee,dept,position",
+      "status": "通过",
+      "ok": true,
+      "ms": 331,
+      "message": "",
+      "sample": "36 字段：id,emp_no,name,gender,age,birth_date"
+    },
+    {
+      "id": "TC-022",
+      "module": "员工档案",
+      "page": "我的档案 /employee/profile",
+      "role": "EMP",
+      "name": "越权查看他人档案应 403（NF-10）",
+      "method": "GET",
+      "url": "/api/employees/:id",
+      "tables": "employee",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 243,
+      "message": "无权查看他人档案",
+      "sample": ""
+    },
+    {
+      "id": "TC-023",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "组织架构树",
+      "method": "GET",
+      "url": "/api/depts/tree",
+      "tables": "dept,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 315,
+      "message": "",
+      "sample": "Array(1)"
+    },
+    {
+      "id": "TC-024",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "部门列表（扁平）",
+      "method": "GET",
+      "url": "/api/depts",
+      "tables": "dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 205,
+      "message": "",
+      "sample": "Array(10)"
+    },
+    {
+      "id": "TC-025",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "新增部门",
+      "method": "POST",
+      "url": "/api/depts",
+      "tables": "dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 317,
+      "message": "",
+      "sample": "success=true id=100007"
+    },
+    {
+      "id": "TC-026",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "修改部门（编制上限）",
+      "method": "PUT",
+      "url": "/api/depts/:id",
+      "tables": "dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 220,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-027",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "删除有下级部门的部门应拒绝",
+      "method": "DELETE",
+      "url": "/api/depts/:id",
+      "tables": "dept",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 643,
+      "message": "存在下级部门，禁止删除",
+      "sample": ""
+    },
+    {
+      "id": "TC-028",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "删除部门（有在职员工应拒绝 BR-03-02）",
+      "method": "DELETE",
+      "url": "/api/depts/:id",
+      "tables": "dept,employee",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 558,
+      "message": "部门下存在在职员工，禁止删除，请先转移人员（BR-03-02）",
+      "sample": ""
+    },
+    {
+      "id": "TC-029",
+      "module": "部门管理",
+      "page": "组织架构 /dept",
+      "role": "HR",
+      "name": "删除空部门",
+      "method": "DELETE",
+      "url": "/api/depts/:id",
+      "tables": "dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 285,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-030",
+      "module": "部门管理",
+      "page": "岗位管理 /dept/positions",
+      "role": "HR",
+      "name": "岗位列表",
+      "method": "GET",
+      "url": "/api/positions",
+      "tables": "position,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 192,
+      "message": "",
+      "sample": "total=11, records=11"
+    },
+    {
+      "id": "TC-031",
+      "module": "部门管理",
+      "page": "岗位管理 /dept/positions",
+      "role": "HR",
+      "name": "新增岗位",
+      "method": "POST",
+      "url": "/api/positions",
+      "tables": "position",
+      "status": "通过",
+      "ok": true,
+      "ms": 348,
+      "message": "",
+      "sample": "success=true id=100008"
+    },
+    {
+      "id": "TC-032",
+      "module": "部门管理",
+      "page": "岗位管理 /dept/positions",
+      "role": "HR",
+      "name": "修改岗位",
+      "method": "PUT",
+      "url": "/api/positions/:id",
+      "tables": "position",
+      "status": "通过",
+      "ok": true,
+      "ms": 219,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-033",
+      "module": "考勤管理",
+      "page": "打卡签到 /attendance/checkin",
+      "role": "HR",
+      "name": "今日考勤状态",
+      "method": "GET",
+      "url": "/api/attendance/today",
+      "tables": "attendance_record,shift",
+      "status": "通过",
+      "ok": true,
+      "ms": 310,
+      "message": "",
+      "sample": "2 字段：record,shift"
+    },
+    {
+      "id": "TC-034",
+      "module": "考勤管理",
+      "page": "打卡签到 /attendance/checkin",
+      "role": "HR",
+      "name": "上班打卡（含重复打卡校验）",
+      "method": "POST",
+      "url": "/api/attendance/checkin",
+      "tables": "attendance_record,shift",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 362,
+      "message": "今日已打卡，请勿重复操作",
+      "sample": ""
+    },
+    {
+      "id": "TC-035",
+      "module": "考勤管理",
+      "page": "打卡签到 /attendance/checkin",
+      "role": "HR",
+      "name": "下班打卡（含未打卡校验）",
+      "method": "POST",
+      "url": "/api/attendance/checkout",
+      "tables": "attendance_record,shift",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 193,
+      "message": "今日已下班打卡",
+      "sample": ""
+    },
+    {
+      "id": "TC-036",
+      "module": "考勤管理",
+      "page": "考勤统计 /attendance/monthly",
+      "role": "HR",
+      "name": "打卡记录分页",
+      "method": "GET",
+      "url": "/api/attendance/records",
+      "tables": "attendance_record,shift",
+      "status": "通过",
+      "ok": true,
+      "ms": 231,
+      "message": "",
+      "sample": "total=200, records=10"
+    },
+    {
+      "id": "TC-037",
+      "module": "考勤管理",
+      "page": "请假申请 /attendance/leave",
+      "role": "HR",
+      "name": "请假分页",
+      "method": "GET",
+      "url": "/api/leave-requests/page",
+      "tables": "leave_request,leave_type,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 194,
+      "message": "",
+      "sample": "total=10, records=10"
+    },
+    {
+      "id": "TC-038",
+      "module": "考勤管理",
+      "page": "请假申请 /attendance/leave",
+      "role": "HR",
+      "name": "提交请假（余额充足）",
+      "method": "POST",
+      "url": "/api/leave-requests",
+      "tables": "leave_request,leave_balance,leave_type,todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 393,
+      "message": "",
+      "sample": "success=true id=100009 requestNo=LV202600010"
+    },
+    {
+      "id": "TC-039",
+      "module": "考勤管理",
+      "page": "请假申请 /attendance/leave",
+      "role": "HR",
+      "name": "请假时间重叠应拒绝（BR-04-01）",
+      "method": "POST",
+      "url": "/api/leave-requests",
+      "tables": "leave_request",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 322,
+      "message": "申请时间段与已有请假单重叠（BR-04-01）",
+      "sample": ""
+    },
+    {
+      "id": "TC-040",
+      "module": "考勤管理",
+      "page": "请假申请 /attendance/leave",
+      "role": "HR",
+      "name": "请假审批（主管/人事）",
+      "method": "PUT",
+      "url": "/api/leave-requests/:id/approve",
+      "tables": "leave_request,approval_record,todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 546,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-041",
+      "module": "考勤管理",
+      "page": "请假申请 /attendance/leave",
+      "role": "HR",
+      "name": "我的假期余额（BR-04-02）",
+      "method": "GET",
+      "url": "/api/leave-balances/my",
+      "tables": "leave_balance,leave_type",
+      "status": "通过",
+      "ok": true,
+      "ms": 260,
+      "message": "",
+      "sample": "total=3, records=3"
+    },
+    {
+      "id": "TC-042",
+      "module": "考勤管理",
+      "page": "加班申请 /attendance/overtime",
+      "role": "HR",
+      "name": "加班分页",
+      "method": "GET",
+      "url": "/api/overtime-requests/page",
+      "tables": "overtime_request,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 350,
+      "message": "",
+      "sample": "total=4, records=4"
+    },
+    {
+      "id": "TC-043",
+      "module": "考勤管理",
+      "page": "加班申请 /attendance/overtime",
+      "role": "HR",
+      "name": "提交加班",
+      "method": "POST",
+      "url": "/api/overtime-requests",
+      "tables": "overtime_request,todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 373,
+      "message": "",
+      "sample": "success=true id=100013 requestNo=OT202600014"
+    },
+    {
+      "id": "TC-044",
+      "module": "考勤管理",
+      "page": "加班申请 /attendance/overtime",
+      "role": "HR",
+      "name": "加班审批",
+      "method": "PUT",
+      "url": "/api/overtime-requests/:id/approve",
+      "tables": "overtime_request,approval_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 735,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-045",
+      "module": "考勤管理",
+      "page": "出差管理 /attendance/trip",
+      "role": "HR",
+      "name": "出差分页",
+      "method": "GET",
+      "url": "/api/business-trips/page",
+      "tables": "business_trip,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 381,
+      "message": "",
+      "sample": "total=3, records=3"
+    },
+    {
+      "id": "TC-046",
+      "module": "考勤管理",
+      "page": "出差管理 /attendance/trip",
+      "role": "HR",
+      "name": "提交出差",
+      "method": "POST",
+      "url": "/api/business-trips",
+      "tables": "business_trip,todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 196,
+      "message": "",
+      "sample": "success=true id=100016 requestNo=BT202600017"
+    },
+    {
+      "id": "TC-047",
+      "module": "考勤管理",
+      "page": "出差管理 /attendance/trip",
+      "role": "HR",
+      "name": "出差审批",
+      "method": "PUT",
+      "url": "/api/business-trips/:id/approve",
+      "tables": "business_trip,approval_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 611,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-048",
+      "module": "考勤管理",
+      "page": "考勤统计 /attendance/monthly",
+      "role": "HR",
+      "name": "考勤月报分页",
+      "method": "GET",
+      "url": "/api/attendance-months/page",
+      "tables": "attendance_month,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 284,
+      "message": "",
+      "sample": "total=24, records=10"
+    },
+    {
+      "id": "TC-049",
+      "module": "考勤管理",
+      "page": "考勤统计 /attendance/monthly",
+      "role": "HR",
+      "name": "考勤封账（BR-04-03）",
+      "method": "PUT",
+      "url": "/api/attendance-months/:id/lock",
+      "tables": "attendance_month",
+      "status": "通过",
+      "ok": true,
+      "ms": 492,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-050",
+      "module": "薪资管理",
+      "page": "薪资标准 /salary/standard",
+      "role": "HR",
+      "name": "薪资标准分页",
+      "method": "GET",
+      "url": "/api/salary-standards/page",
+      "tables": "salary_standard",
+      "status": "通过",
+      "ok": true,
+      "ms": 392,
+      "message": "",
+      "sample": "total=4, records=4"
+    },
+    {
+      "id": "TC-051",
+      "module": "薪资管理",
+      "page": "薪资标准 /salary/standard",
+      "role": "HR",
+      "name": "新增薪资标准",
+      "method": "POST",
+      "url": "/api/salary-standards",
+      "tables": "salary_standard",
+      "status": "通过",
+      "ok": true,
+      "ms": 265,
+      "message": "",
+      "sample": "success=true id=100019 standardCode=STD18240"
+    },
+    {
+      "id": "TC-052",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "HR",
+      "name": "薪资核算记录分页",
+      "method": "GET",
+      "url": "/api/salary-records/page",
+      "tables": "salary_record,employee,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 313,
+      "message": "",
+      "sample": "total=72, records=10"
+    },
+    {
+      "id": "TC-053",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "HR",
+      "name": "发起月度核算（已封账月份）",
+      "method": "POST",
+      "url": "/api/salary-records/calculate",
+      "tables": "salary_record,salary_item,employee_salary,insurance_config,attendance_month",
+      "status": "通过",
+      "ok": true,
+      "ms": 263,
+      "message": "",
+      "sample": "success=true created=0"
+    },
+    {
+      "id": "TC-054",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "HR",
+      "name": "未封账月份禁止核算（BR-05-02）",
+      "method": "POST",
+      "url": "/api/salary-records/calculate",
+      "tables": "attendance_month,salary_record",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 357,
+      "message": "有 11 名员工的考勤月报未封账，禁止启动核算（BR-05-02）",
+      "sample": ""
+    },
+    {
+      "id": "TC-055",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "FIN",
+      "name": "薪资复核（BR-05-03 状态流转）",
+      "method": "PUT",
+      "url": "/api/salary-records/:id/review",
+      "tables": "salary_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 579,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-056",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "FIN",
+      "name": "薪资发放（发放后锁定 BR-05-04）",
+      "method": "PUT",
+      "url": "/api/salary-records/:id/pay",
+      "tables": "salary_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 354,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-057",
+      "module": "薪资管理",
+      "page": "我的薪资条 /salary/payslip",
+      "role": "HR",
+      "name": "我的薪资条",
+      "method": "GET",
+      "url": "/api/salary/payslips/my",
+      "tables": "salary_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 316,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-058",
+      "module": "薪资管理",
+      "page": "我的薪资条 /salary/payslip",
+      "role": "HR",
+      "name": "薪资条明细（salary_item）",
+      "method": "GET",
+      "url": "/api/salary/payslips/:recordId/items",
+      "tables": "salary_item,salary_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 262,
+      "message": "",
+      "sample": "2 字段：record,items"
+    },
+    {
+      "id": "TC-059",
+      "module": "薪资管理",
+      "page": "薪资核算 /salary/record",
+      "role": "FIN",
+      "name": "财务查看薪资分页（数据范围）",
+      "method": "GET",
+      "url": "/api/salary-records/page",
+      "tables": "salary_record,employee,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 212,
+      "message": "",
+      "sample": "total=72, records=10"
+    },
+    {
+      "id": "TC-060",
+      "module": "招聘管理",
+      "page": "招聘需求 /recruit/request",
+      "role": "HR",
+      "name": "招聘需求分页",
+      "method": "GET",
+      "url": "/api/recruit-requests/page",
+      "tables": "recruit_request,dept,position",
+      "status": "通过",
+      "ok": true,
+      "ms": 240,
+      "message": "",
+      "sample": "total=5, records=5"
+    },
+    {
+      "id": "TC-061",
+      "module": "招聘管理",
+      "page": "招聘需求 /recruit/request",
+      "role": "MGR",
+      "name": "主管提报招聘需求（BR-06-02）",
+      "method": "POST",
+      "url": "/api/recruit-requests",
+      "tables": "recruit_request,approval_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 218,
+      "message": "",
+      "sample": "success=true id=100020 requestNo=RC202600021"
+    },
+    {
+      "id": "TC-062",
+      "module": "招聘管理",
+      "page": "招聘需求 /recruit/request",
+      "role": "HR",
+      "name": "需求审批",
+      "method": "PUT",
+      "url": "/api/recruit-requests/:id/approve",
+      "tables": "recruit_request,approval_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 499,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-063",
+      "module": "招聘管理",
+      "page": "简历筛选 /recruit/candidate",
+      "role": "HR",
+      "name": "候选人分页",
+      "method": "GET",
+      "url": "/api/candidates/page",
+      "tables": "candidate,recruit_request",
+      "status": "通过",
+      "ok": true,
+      "ms": 286,
+      "message": "",
+      "sample": "total=10, records=10"
+    },
+    {
+      "id": "TC-064",
+      "module": "招聘管理",
+      "page": "简历筛选 /recruit/candidate",
+      "role": "HR",
+      "name": "录入候选人",
+      "method": "POST",
+      "url": "/api/candidates",
+      "tables": "candidate",
+      "status": "通过",
+      "ok": true,
+      "ms": 257,
+      "message": "",
+      "sample": "success=true id=100022"
+    },
+    {
+      "id": "TC-065",
+      "module": "招聘管理",
+      "page": "简历筛选 /recruit/candidate",
+      "role": "HR",
+      "name": "推进候选人阶段（BR-06-01 单向）",
+      "method": "PUT",
+      "url": "/api/candidates/:id/stage",
+      "tables": "candidate",
+      "status": "通过",
+      "ok": true,
+      "ms": 641,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-066",
+      "module": "招聘管理",
+      "page": "简历筛选 /recruit/candidate",
+      "role": "HR",
+      "name": "面试记录列表",
+      "method": "GET",
+      "url": "/api/interview-records",
+      "tables": "interview_record,candidate,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 250,
+      "message": "",
+      "sample": "total=6, records=6"
+    },
+    {
+      "id": "TC-067",
+      "module": "招聘管理",
+      "page": "简历筛选 /recruit/candidate",
+      "role": "HR",
+      "name": "安排面试/录入评价",
+      "method": "POST",
+      "url": "/api/interview-records",
+      "tables": "interview_record,candidate",
+      "status": "通过",
+      "ok": true,
+      "ms": 188,
+      "message": "",
+      "sample": "success=true id=100023"
+    },
+    {
+      "id": "TC-068",
+      "module": "招聘管理",
+      "page": "录用审批 /recruit/offer",
+      "role": "HR",
+      "name": "Offer 分页",
+      "method": "GET",
+      "url": "/api/offers/page",
+      "tables": "offer_record,candidate",
+      "status": "通过",
+      "ok": true,
+      "ms": 358,
+      "message": "",
+      "sample": "total=3, records=3"
+    },
+    {
+      "id": "TC-069",
+      "module": "招聘管理",
+      "page": "录用审批 /recruit/offer",
+      "role": "HR",
+      "name": "发送 Offer",
+      "method": "PUT",
+      "url": "/api/offers/:id/send",
+      "tables": "offer_record",
+      "status": "通过（按业务规则返回提示）",
+      "ok": true,
+      "ms": 507,
+      "message": "仅\"待发送\"状态可发送",
+      "sample": ""
+    },
+    {
+      "id": "TC-070",
+      "module": "招聘管理",
+      "page": "录用审批 /recruit/offer",
+      "role": "HR",
+      "name": "确认 Offer 结果",
+      "method": "PUT",
+      "url": "/api/offers/:id/status",
+      "tables": "offer_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 583,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-071",
+      "module": "培训管理",
+      "page": "培训计划 /training/plan",
+      "role": "HR",
+      "name": "培训计划分页",
+      "method": "GET",
+      "url": "/api/training-plans/page",
+      "tables": "training_plan,course,trainer",
+      "status": "通过",
+      "ok": true,
+      "ms": 335,
+      "message": "",
+      "sample": "total=4, records=4"
+    },
+    {
+      "id": "TC-072",
+      "module": "培训管理",
+      "page": "培训计划 /training/plan",
+      "role": "HR",
+      "name": "新增培训计划",
+      "method": "POST",
+      "url": "/api/training-plans",
+      "tables": "training_plan,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 336,
+      "message": "",
+      "sample": "success=true id=100024 planCode=TP20260025"
+    },
+    {
+      "id": "TC-073",
+      "module": "培训管理",
+      "page": "培训计划 /training/plan",
+      "role": "EMP",
+      "name": "培训报名（BR-07-01 满员/重复校验）",
+      "method": "POST",
+      "url": "/api/training-plans/:id/enroll",
+      "tables": "training_enroll,training_plan,course",
+      "status": "通过",
+      "ok": true,
+      "ms": 558,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-074",
+      "module": "培训管理",
+      "page": "我的培训 /training/my",
+      "role": "EMP",
+      "name": "我的培训档案",
+      "method": "GET",
+      "url": "/api/training/my",
+      "tables": "training_record,training_plan,training_enroll",
+      "status": "通过",
+      "ok": true,
+      "ms": 342,
+      "message": "",
+      "sample": "total=1, records=1"
+    },
+    {
+      "id": "TC-075",
+      "module": "绩效考核",
+      "page": "考核方案 /performance/plan",
+      "role": "HR",
+      "name": "考核方案分页",
+      "method": "GET",
+      "url": "/api/performance-plans/page",
+      "tables": "performance_plan,performance_indicator",
+      "status": "通过",
+      "ok": true,
+      "ms": 361,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-076",
+      "module": "绩效考核",
+      "page": "考核方案 /performance/plan",
+      "role": "HR",
+      "name": "新增考核方案",
+      "method": "POST",
+      "url": "/api/performance-plans",
+      "tables": "performance_plan,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 185,
+      "message": "",
+      "sample": "success=true id=100027 planCode=PF20260028"
+    },
+    {
+      "id": "TC-077",
+      "module": "绩效考核",
+      "page": "考核方案 /performance/plan",
+      "role": "HR",
+      "name": "发布方案（生成全员考核记录）",
+      "method": "PUT",
+      "url": "/api/performance-plans/:id/publish",
+      "tables": "performance_plan,performance_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 573,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-078",
+      "module": "绩效考核",
+      "page": "绩效评分 /performance/record",
+      "role": "HR",
+      "name": "考核记录分页（全量）",
+      "method": "GET",
+      "url": "/api/performance-records/page",
+      "tables": "performance_record,employee,performance_plan",
+      "status": "通过",
+      "ok": true,
+      "ms": 394,
+      "message": "",
+      "sample": "total=53, records=10"
+    },
+    {
+      "id": "TC-079",
+      "module": "绩效考核",
+      "page": "绩效评分 /performance/record",
+      "role": "EMP",
+      "name": "员工自评（本人）",
+      "method": "PUT",
+      "url": "/api/performance-records/:id/self-score",
+      "tables": "performance_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 550,
+      "message": "",
+      "sample": "success=true weightNote=自评权重 20%"
+    },
+    {
+      "id": "TC-080",
+      "module": "绩效考核",
+      "page": "绩效评分 /performance/record",
+      "role": "HR",
+      "name": "主管评分（自动算总分/等级）",
+      "method": "PUT",
+      "url": "/api/performance-records/:id/leader-score",
+      "tables": "performance_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 301,
+      "message": "",
+      "sample": "success=true finalScore=82 grade=A"
+    },
+    {
+      "id": "TC-081",
+      "module": "绩效考核",
+      "page": "绩效评分 /performance/record",
+      "role": "EMP",
+      "name": "结果确认/申诉（BR-08-01）",
+      "method": "PUT",
+      "url": "/api/performance-records/:id/confirm",
+      "tables": "performance_record,performance_interview",
+      "status": "通过",
+      "ok": true,
+      "ms": 290,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-082",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "系统用户分页",
+      "method": "GET",
+      "url": "/api/sys/users/page",
+      "tables": "sys_user,sys_user_role,sys_role,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 291,
+      "message": "",
+      "sample": "total=6, records=6"
+    },
+    {
+      "id": "TC-083",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "新增用户（密码策略 BR-09-01）",
+      "method": "POST",
+      "url": "/api/sys/users",
+      "tables": "sys_user,sys_user_role",
+      "status": "通过",
+      "ok": true,
+      "ms": 211,
+      "message": "",
+      "sample": "success=true id=100065"
+    },
+    {
+      "id": "TC-084",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "新增用户-密码过短应拒绝（BR-09-01）",
+      "method": "POST",
+      "url": "/api/sys/users",
+      "tables": "sys_user",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 275,
+      "message": "密码长度不得少于 8 位（BR-09-01）",
+      "sample": ""
+    },
+    {
+      "id": "TC-085",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "修改用户（停用）",
+      "method": "PUT",
+      "url": "/api/sys/users/:id",
+      "tables": "sys_user",
+      "status": "通过",
+      "ok": true,
+      "ms": 298,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-086",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "重置密码",
+      "method": "PUT",
+      "url": "/api/sys/users/:id/password/reset",
+      "tables": "sys_user",
+      "status": "通过",
+      "ok": true,
+      "ms": 288,
+      "message": "",
+      "sample": "success=true initPassword=Init@2026"
+    },
+    {
+      "id": "TC-087",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "删除用户",
+      "method": "DELETE",
+      "url": "/api/sys/users/:id",
+      "tables": "sys_user,sys_user_role",
+      "status": "通过",
+      "ok": true,
+      "ms": 218,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-088",
+      "module": "系统设置",
+      "page": "用户管理 /system/user",
+      "role": "ADMIN",
+      "name": "管理员自停用应拒绝（BR-09-02）",
+      "method": "PUT",
+      "url": "/api/sys/users/:id",
+      "tables": "sys_user",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 319,
+      "message": "不可停用自身的管理员账号（BR-09-02）",
+      "sample": ""
+    },
+    {
+      "id": "TC-089",
+      "module": "系统设置",
+      "page": "角色权限 /system/role",
+      "role": "ADMIN",
+      "name": "角色列表（数据范围）",
+      "method": "GET",
+      "url": "/api/sys/roles",
+      "tables": "sys_role,sys_role_menu",
+      "status": "通过",
+      "ok": true,
+      "ms": 231,
+      "message": "",
+      "sample": "total=6, records=6"
+    },
+    {
+      "id": "TC-090",
+      "module": "系统设置",
+      "page": "角色权限 /system/role",
+      "role": "ADMIN",
+      "name": "新增角色",
+      "method": "POST",
+      "url": "/api/sys/roles",
+      "tables": "sys_role,sys_role_menu",
+      "status": "通过",
+      "ok": true,
+      "ms": 189,
+      "message": "",
+      "sample": "success=true id=100066"
+    },
+    {
+      "id": "TC-091",
+      "module": "系统设置",
+      "page": "角色权限 /system/role",
+      "role": "ADMIN",
+      "name": "修改角色数据范围",
+      "method": "PUT",
+      "url": "/api/sys/roles/:id",
+      "tables": "sys_role",
+      "status": "通过",
+      "ok": true,
+      "ms": 292,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-092",
+      "module": "系统设置",
+      "page": "数据字典 /system/dict",
+      "role": "ADMIN",
+      "name": "字典类型列表",
+      "method": "GET",
+      "url": "/api/sys/dict-types",
+      "tables": "sys_dict_type",
+      "status": "通过",
+      "ok": true,
+      "ms": 382,
+      "message": "",
+      "sample": "total=5, records=5"
+    },
+    {
+      "id": "TC-093",
+      "module": "系统设置",
+      "page": "数据字典 /system/dict",
+      "role": "ADMIN",
+      "name": "字典项列表",
+      "method": "GET",
+      "url": "/api/sys/dict-types/:id/items",
+      "tables": "sys_dict_item,sys_dict_type",
+      "status": "通过",
+      "ok": true,
+      "ms": 194,
+      "message": "",
+      "sample": "total=3, records=3"
+    },
+    {
+      "id": "TC-094",
+      "module": "系统设置",
+      "page": "参数配置 /system/config",
+      "role": "ADMIN",
+      "name": "参数配置列表",
+      "method": "GET",
+      "url": "/api/sys/configs",
+      "tables": "sys_config",
+      "status": "通过",
+      "ok": true,
+      "ms": 394,
+      "message": "",
+      "sample": "total=6, records=6"
+    },
+    {
+      "id": "TC-095",
+      "module": "系统设置",
+      "page": "参数配置 /system/config",
+      "role": "ADMIN",
+      "name": "修改参数（内置参数不可置空）",
+      "method": "PUT",
+      "url": "/api/sys/configs/:id",
+      "tables": "sys_config",
+      "status": "通过",
+      "ok": true,
+      "ms": 653,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-096",
+      "module": "系统设置",
+      "page": "参数配置 /system/config",
+      "role": "ADMIN",
+      "name": "内置参数置空应拒绝",
+      "method": "PUT",
+      "url": "/api/sys/configs/:id",
+      "tables": "sys_config",
+      "status": "通过（业务规则已拦截）",
+      "ok": true,
+      "ms": 652,
+      "message": "系统内置参数不允许置空",
+      "sample": ""
+    },
+    {
+      "id": "TC-097",
+      "module": "系统设置",
+      "page": "日志审计 /system/log",
+      "role": "ADMIN",
+      "name": "登录日志分页",
+      "method": "GET",
+      "url": "/api/sys/logs/login",
+      "tables": "sys_login_log",
+      "status": "通过",
+      "ok": true,
+      "ms": 340,
+      "message": "",
+      "sample": "total=18, records=10"
+    },
+    {
+      "id": "TC-098",
+      "module": "系统设置",
+      "page": "日志审计 /system/log",
+      "role": "ADMIN",
+      "name": "操作日志分页",
+      "method": "GET",
+      "url": "/api/sys/logs/oper",
+      "tables": "sys_oper_log",
+      "status": "通过",
+      "ok": true,
+      "ms": 339,
+      "message": "",
+      "sample": "total=16, records=10"
+    },
+    {
+      "id": "TC-099",
+      "module": "通知公告",
+      "page": "通知公告 /notices",
+      "role": "HR",
+      "name": "公告分页（管理端）",
+      "method": "GET",
+      "url": "/api/notices/page",
+      "tables": "notice,notice_read",
+      "status": "通过",
+      "ok": true,
+      "ms": 354,
+      "message": "",
+      "sample": "total=5, records=5"
+    },
+    {
+      "id": "TC-100",
+      "module": "通知公告",
+      "page": "通知公告 /notices",
+      "role": "HR",
+      "name": "新增公告（草稿）",
+      "method": "POST",
+      "url": "/api/notices",
+      "tables": "notice",
+      "status": "通过",
+      "ok": true,
+      "ms": 313,
+      "message": "",
+      "sample": "success=true id=100067"
+    },
+    {
+      "id": "TC-101",
+      "module": "通知公告",
+      "page": "通知公告 /notices",
+      "role": "HR",
+      "name": "发布公告",
+      "method": "PUT",
+      "url": "/api/notices/:id/publish",
+      "tables": "notice",
+      "status": "通过",
+      "ok": true,
+      "ms": 253,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-102",
+      "module": "通知公告",
+      "page": "通知公告 /notices",
+      "role": "HR",
+      "name": "下线公告",
+      "method": "PUT",
+      "url": "/api/notices/:id/offline",
+      "tables": "notice",
+      "status": "通过",
+      "ok": true,
+      "ms": 302,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-103",
+      "module": "认证",
+      "page": "布局退出登录",
+      "role": "ADMIN",
+      "name": "退出登录",
+      "method": "POST",
+      "url": "/api/auth/logout",
+      "tables": "sys_login_log",
+      "status": "通过",
+      "ok": true,
+      "ms": 226,
+      "message": "",
+      "sample": "success=true"
+    },
+    {
+      "id": "TC-104",
+      "module": "权限与数据范围",
+      "page": "首页 /dashboard",
+      "role": "MGR",
+      "name": "主管看板（仅本部门数据）",
+      "method": "GET",
+      "url": "/api/dashboard/summary",
+      "tables": "employee,dept,todo_task",
+      "status": "通过",
+      "ok": true,
+      "ms": 260,
+      "message": "",
+      "sample": "8 字段：totalEmployees,monthHired,monthLeft,deptCount,headcountLimit,attendanceAbnormal"
+    },
+    {
+      "id": "TC-105",
+      "module": "权限与数据范围",
+      "page": "员工档案 /employee",
+      "role": "MGR",
+      "name": "主管员工查询（仅本部门）",
+      "method": "GET",
+      "url": "/api/employees/page",
+      "tables": "employee,dept",
+      "status": "通过",
+      "ok": true,
+      "ms": 319,
+      "message": "",
+      "sample": "total=9, records=9"
+    },
+    {
+      "id": "TC-106",
+      "module": "权限与数据范围",
+      "page": "考勤统计 /attendance/monthly",
+      "role": "MGR",
+      "name": "主管查看本部门打卡记录",
+      "method": "GET",
+      "url": "/api/attendance/records",
+      "tables": "attendance_record,shift",
+      "status": "通过",
+      "ok": true,
+      "ms": 345,
+      "message": "",
+      "sample": "total=200, records=10"
+    },
+    {
+      "id": "TC-107",
+      "module": "权限与数据范围",
+      "page": "绩效评分 /performance/record",
+      "role": "MGR",
+      "name": "主管查看本部门绩效记录",
+      "method": "GET",
+      "url": "/api/performance-records/page",
+      "tables": "performance_record,employee",
+      "status": "通过",
+      "ok": true,
+      "ms": 204,
+      "message": "",
+      "sample": "total=14, records=10"
+    },
+    {
+      "id": "TC-108",
+      "module": "权限与数据范围",
+      "page": "打卡签到 /attendance/checkin",
+      "role": "EMP",
+      "name": "员工今日考勤状态",
+      "method": "GET",
+      "url": "/api/attendance/today",
+      "tables": "attendance_record,shift",
+      "status": "通过",
+      "ok": true,
+      "ms": 399,
+      "message": "",
+      "sample": "2 字段：record,shift"
+    },
+    {
+      "id": "TC-109",
+      "module": "权限与数据范围",
+      "page": "请假申请 /attendance/leave",
+      "role": "EMP",
+      "name": "员工仅见本人请假单",
+      "method": "GET",
+      "url": "/api/leave-requests/page",
+      "tables": "leave_request,leave_type",
+      "status": "通过",
+      "ok": true,
+      "ms": 206,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-110",
+      "module": "权限与数据范围",
+      "page": "我的薪资条 /salary/payslip",
+      "role": "EMP",
+      "name": "员工查看本人薪资条",
+      "method": "GET",
+      "url": "/api/salary/payslips/my",
+      "tables": "salary_record",
+      "status": "通过",
+      "ok": true,
+      "ms": 314,
+      "message": "",
+      "sample": "total=2, records=2"
+    },
+    {
+      "id": "TC-111",
+      "module": "权限与数据范围",
+      "page": "我的薪资条 /salary/payslip",
+      "role": "EMP",
+      "name": "员工查看本人薪资明细",
+      "method": "GET",
+      "url": "/api/salary/payslips/:recordId/items",
+      "tables": "salary_item",
+      "status": "通过",
+      "ok": true,
+      "ms": 248,
+      "message": "",
+      "sample": "2 字段：record,items"
+    },
+    {
+      "id": "TC-112",
+      "module": "权限与数据范围",
+      "page": "我的培训 /training/my",
+      "role": "EMP",
+      "name": "员工查看本人培训档案",
+      "method": "GET",
+      "url": "/api/training/my",
+      "tables": "training_record,training_enroll",
+      "status": "通过",
+      "ok": true,
+      "ms": 277,
+      "message": "",
+      "sample": "total=1, records=1"
+    },
+    {
+      "id": "TC-113",
+      "module": "权限与数据范围",
+      "page": "绩效评分 /performance/record",
+      "role": "EMP",
+      "name": "员工仅见本人绩效记录",
+      "method": "GET",
+      "url": "/api/performance-records/page",
+      "tables": "performance_record,performance_plan",
+      "status": "通过",
+      "ok": true,
+      "ms": 361,
+      "message": "",
+      "sample": "total=3, records=3"
+    }
+  ],
+  "dangling": [],
+  "redundant": []
+}

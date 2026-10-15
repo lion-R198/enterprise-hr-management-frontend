@@ -1,0 +1,1864 @@
+{
+  "startedAt": "2026-09-17T07:01:48.406Z",
+  "mockFlag": "(已移除，环境变量不存在)",
+  "baseApi": "/api",
+  "proxyTarget": "http://localhost:8080",
+  "cases": [
+    {
+      "id": "FE-001",
+      "module": "认证与令牌",
+      "method": "POST",
+      "path": "/auth/login",
+      "role": "guest",
+      "issued": [
+        "POST /api/auth/login"
+      ],
+      "hit": "POST /api/auth/login",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 6,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-002",
+      "module": "认证与令牌",
+      "method": "GET",
+      "path": "/auth/me",
+      "role": "admin",
+      "issued": [
+        "GET /api/auth/me"
+      ],
+      "hit": "GET /api/auth/me",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-003",
+      "module": "首页看板",
+      "method": "GET",
+      "path": "/dashboard/summary",
+      "role": "admin",
+      "issued": [
+        "GET /api/dashboard/summary"
+      ],
+      "hit": "GET /api/dashboard/summary",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-004",
+      "module": "首页看板",
+      "method": "GET",
+      "path": "/dashboard/todos",
+      "role": "mgr",
+      "issued": [
+        "GET /api/dashboard/todos"
+      ],
+      "hit": "GET /api/dashboard/todos",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-005",
+      "module": "首页看板",
+      "method": "GET",
+      "path": "/dashboard/notices",
+      "role": "admin",
+      "issued": [
+        "GET /api/dashboard/notices"
+      ],
+      "hit": "GET /api/dashboard/notices",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-006",
+      "module": "首页看板",
+      "method": "GET",
+      "path": "/dashboard/charts",
+      "role": "admin",
+      "issued": [
+        "GET /api/dashboard/charts"
+      ],
+      "hit": "GET /api/dashboard/charts",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-007",
+      "module": "首页看板",
+      "method": "PUT",
+      "path": "/dashboard/todos/{id}/handle",
+      "role": "mgr",
+      "issued": [
+        "PUT /api/dashboard/todos/10/handle"
+      ],
+      "hit": "PUT /api/dashboard/todos/10/handle",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-008",
+      "module": "组织管理",
+      "method": "GET",
+      "path": "/depts/tree",
+      "role": "admin",
+      "issued": [
+        "GET /api/depts/tree"
+      ],
+      "hit": "GET /api/depts/tree",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-009",
+      "module": "组织管理",
+      "method": "GET",
+      "path": "/depts",
+      "role": "admin",
+      "issued": [
+        "GET /api/depts"
+      ],
+      "hit": "GET /api/depts",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-010",
+      "module": "组织管理",
+      "method": "POST",
+      "path": "/depts",
+      "role": "admin",
+      "issued": [
+        "POST /api/depts"
+      ],
+      "hit": "POST /api/depts",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-011",
+      "module": "组织管理",
+      "method": "PUT",
+      "path": "/depts/{id}",
+      "role": "admin",
+      "issued": [
+        "PUT /api/depts/30"
+      ],
+      "hit": "PUT /api/depts/30",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-012",
+      "module": "组织管理",
+      "method": "DELETE",
+      "path": "/depts/{id}",
+      "role": "admin",
+      "issued": [
+        "DELETE /api/depts/30"
+      ],
+      "hit": "DELETE /api/depts/30",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-013",
+      "module": "组织管理",
+      "method": "GET",
+      "path": "/positions",
+      "role": "admin",
+      "issued": [
+        "GET /api/positions?current=1&size=10"
+      ],
+      "hit": "GET /api/positions?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-014",
+      "module": "组织管理",
+      "method": "POST",
+      "path": "/positions",
+      "role": "hr",
+      "issued": [
+        "POST /api/positions"
+      ],
+      "hit": "POST /api/positions",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-015",
+      "module": "组织管理",
+      "method": "PUT",
+      "path": "/positions/{id}",
+      "role": "hr",
+      "issued": [
+        "PUT /api/positions/25"
+      ],
+      "hit": "PUT /api/positions/25",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-016",
+      "module": "员工管理",
+      "method": "GET",
+      "path": "/employees/page",
+      "role": "admin",
+      "issued": [
+        "GET /api/employees/page?current=1&size=10"
+      ],
+      "hit": "GET /api/employees/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 2,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-017",
+      "module": "员工管理",
+      "method": "GET",
+      "path": "/employees/{id}",
+      "role": "admin",
+      "issued": [
+        "GET /api/employees/1001"
+      ],
+      "hit": "GET /api/employees/1001",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 3,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-018",
+      "module": "员工管理",
+      "method": "POST",
+      "path": "/employees",
+      "role": "hr",
+      "issued": [
+        "POST /api/employees"
+      ],
+      "hit": "POST /api/employees",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 2,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-019",
+      "module": "员工管理",
+      "method": "PUT",
+      "path": "/employees/{id}",
+      "role": "hr",
+      "issued": [
+        "PUT /api/employees/1097"
+      ],
+      "hit": "PUT /api/employees/1097",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-020",
+      "module": "员工管理",
+      "method": "PUT",
+      "path": "/employees/{id}/status",
+      "role": "hr",
+      "issued": [
+        "PUT /api/employees/1097/status"
+      ],
+      "hit": "PUT /api/employees/1097/status",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-021",
+      "module": "员工管理",
+      "method": "GET",
+      "path": "/employees/{id}/changes",
+      "role": "admin",
+      "issued": [
+        "GET /api/employees/1097/changes"
+      ],
+      "hit": "GET /api/employees/1097/changes",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-022",
+      "module": "员工管理",
+      "method": "POST",
+      "path": "/employee-changes",
+      "role": "hr",
+      "issued": [
+        "POST /api/employee-changes"
+      ],
+      "hit": "POST /api/employee-changes",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-023",
+      "module": "员工管理",
+      "method": "GET",
+      "path": "/employee-changes/page",
+      "role": "admin",
+      "issued": [
+        "GET /api/employee-changes/page?current=1&size=10"
+      ],
+      "hit": "GET /api/employee-changes/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-024",
+      "module": "员工管理",
+      "method": "GET",
+      "path": "/employee-contracts/page",
+      "role": "admin",
+      "issued": [
+        "GET /api/employee-contracts/page?current=1&size=10"
+      ],
+      "hit": "GET /api/employee-contracts/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-025",
+      "module": "员工管理",
+      "method": "POST",
+      "path": "/employee-contracts",
+      "role": "hr",
+      "issued": [
+        "POST /api/employee-contracts"
+      ],
+      "hit": "POST /api/employee-contracts",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-026",
+      "module": "员工管理",
+      "method": "DELETE",
+      "path": "/employees/{id}",
+      "role": "hr",
+      "issued": [
+        "DELETE /api/employees/1097"
+      ],
+      "hit": "DELETE /api/employees/1097",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-027",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/attendance/today",
+      "role": "demo",
+      "issued": [
+        "GET /api/attendance/today"
+      ],
+      "hit": "GET /api/attendance/today",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-028",
+      "module": "考勤与假勤",
+      "method": "POST",
+      "path": "/attendance/checkin",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/attendance/checkin"
+      ],
+      "hit": "POST /api/attendance/checkin",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-029",
+      "module": "考勤与假勤",
+      "method": "POST",
+      "path": "/attendance/checkout",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/attendance/checkout"
+      ],
+      "hit": "POST /api/attendance/checkout",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-030",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/attendance/records",
+      "role": "demo",
+      "issued": [
+        "GET /api/attendance/records?current=1&size=14"
+      ],
+      "hit": "GET /api/attendance/records?current=1&size=14",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-031",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/leave-requests/page",
+      "role": "demo",
+      "issued": [
+        "GET /api/leave-requests/page?current=1&size=10&tab=0"
+      ],
+      "hit": "GET /api/leave-requests/page?current=1&size=10&tab=0",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-032",
+      "module": "考勤与假勤",
+      "method": "POST",
+      "path": "/leave-requests",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/leave-requests"
+      ],
+      "hit": "POST /api/leave-requests",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-033",
+      "module": "考勤与假勤",
+      "method": "PUT",
+      "path": "/leave-requests/{id}/approve",
+      "role": "hr",
+      "issued": [
+        "PUT /api/leave-requests/45/approve"
+      ],
+      "hit": "PUT /api/leave-requests/45/approve",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-034",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/leave-balances/my",
+      "role": "demo",
+      "issued": [
+        "GET /api/leave-balances/my"
+      ],
+      "hit": "GET /api/leave-balances/my",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-035",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/overtime-requests/page",
+      "role": "demo",
+      "issued": [
+        "GET /api/overtime-requests/page?current=1&size=10&tab=0"
+      ],
+      "hit": "GET /api/overtime-requests/page?current=1&size=10&tab=0",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-036",
+      "module": "考勤与假勤",
+      "method": "POST",
+      "path": "/overtime-requests",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/overtime-requests"
+      ],
+      "hit": "POST /api/overtime-requests",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-037",
+      "module": "考勤与假勤",
+      "method": "PUT",
+      "path": "/overtime-requests/{id}/approve",
+      "role": "hr",
+      "issued": [
+        "PUT /api/overtime-requests/47/approve"
+      ],
+      "hit": "PUT /api/overtime-requests/47/approve",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-038",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/business-trips/page",
+      "role": "demo",
+      "issued": [
+        "GET /api/business-trips/page?current=1&size=10&tab=0"
+      ],
+      "hit": "GET /api/business-trips/page?current=1&size=10&tab=0",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-039",
+      "module": "考勤与假勤",
+      "method": "POST",
+      "path": "/business-trips",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/business-trips"
+      ],
+      "hit": "POST /api/business-trips",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-040",
+      "module": "考勤与假勤",
+      "method": "PUT",
+      "path": "/business-trips/{id}/approve",
+      "role": "hr",
+      "issued": [
+        "PUT /api/business-trips/23/approve"
+      ],
+      "hit": "PUT /api/business-trips/23/approve",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-041",
+      "module": "考勤与假勤",
+      "method": "GET",
+      "path": "/attendance-months/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/attendance-months/page?current=1&size=10&year=2026&month=7&lockStatus=1"
+      ],
+      "hit": "GET /api/attendance-months/page?current=1&size=10&year=2026&month=7&lockStatus=1",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 2,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-042",
+      "module": "考勤与假勤",
+      "method": "PUT",
+      "path": "/attendance-months/{id}/lock",
+      "role": "hr",
+      "issued": [
+        "PUT /api/attendance-months/1/lock"
+      ],
+      "hit": "PUT /api/attendance-months/1/lock",
+      "extras": [],
+      "httpStatus": 400,
+      "bizOk": false,
+      "message": "该考勤月报已封账，禁止修改（BR-04-03）",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-043",
+      "module": "薪资管理",
+      "method": "GET",
+      "path": "/salary-standards/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/salary-standards/page?current=1&size=10"
+      ],
+      "hit": "GET /api/salary-standards/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-044",
+      "module": "薪资管理",
+      "method": "POST",
+      "path": "/salary-standards",
+      "role": "hr",
+      "issued": [
+        "POST /api/salary-standards"
+      ],
+      "hit": "POST /api/salary-standards",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-045",
+      "module": "薪资管理",
+      "method": "GET",
+      "path": "/salary-records/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/salary-records/page?current=1&size=10&year=2026&month=7"
+      ],
+      "hit": "GET /api/salary-records/page?current=1&size=10&year=2026&month=7",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-046",
+      "module": "薪资管理",
+      "method": "POST",
+      "path": "/salary-records/calculate",
+      "role": "hr",
+      "issued": [
+        "POST /api/salary-records/calculate"
+      ],
+      "hit": "POST /api/salary-records/calculate",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-047",
+      "module": "薪资管理",
+      "method": "PUT",
+      "path": "/salary-records/{id}/review",
+      "role": "hr",
+      "issued": [
+        "PUT /api/salary-records/999999/review"
+      ],
+      "hit": "PUT /api/salary-records/999999/review",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "薪资记录不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-048",
+      "module": "薪资管理",
+      "method": "PUT",
+      "path": "/salary-records/{id}/pay",
+      "role": "hr",
+      "issued": [
+        "PUT /api/salary-records/999999/pay"
+      ],
+      "hit": "PUT /api/salary-records/999999/pay",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "薪资记录不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-049",
+      "module": "薪资管理",
+      "method": "GET",
+      "path": "/salary/payslips/my",
+      "role": "demo",
+      "issued": [
+        "GET /api/salary/payslips/my"
+      ],
+      "hit": "GET /api/salary/payslips/my",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-050",
+      "module": "薪资管理",
+      "method": "GET",
+      "path": "/salary/payslips/{recordId}/items",
+      "role": "demo",
+      "issued": [
+        "GET /api/salary/payslips/46/items"
+      ],
+      "hit": "GET /api/salary/payslips/46/items",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-051",
+      "module": "招聘管理",
+      "method": "GET",
+      "path": "/recruit-requests/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/recruit-requests/page?current=1&size=10"
+      ],
+      "hit": "GET /api/recruit-requests/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-052",
+      "module": "招聘管理",
+      "method": "POST",
+      "path": "/recruit-requests",
+      "role": "hr",
+      "issued": [
+        "POST /api/recruit-requests"
+      ],
+      "hit": "POST /api/recruit-requests",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-053",
+      "module": "招聘管理",
+      "method": "PUT",
+      "path": "/recruit-requests/{id}/approve",
+      "role": "hr",
+      "issued": [
+        "PUT /api/recruit-requests/16/approve"
+      ],
+      "hit": "PUT /api/recruit-requests/16/approve",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-054",
+      "module": "招聘管理",
+      "method": "GET",
+      "path": "/candidates/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/candidates/page?current=1&size=10"
+      ],
+      "hit": "GET /api/candidates/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-055",
+      "module": "招聘管理",
+      "method": "POST",
+      "path": "/candidates",
+      "role": "hr",
+      "issued": [
+        "POST /api/candidates"
+      ],
+      "hit": "POST /api/candidates",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-056",
+      "module": "招聘管理",
+      "method": "PUT",
+      "path": "/candidates/{id}/stage",
+      "role": "hr",
+      "issued": [
+        "PUT /api/candidates/36/stage"
+      ],
+      "hit": "PUT /api/candidates/36/stage",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-057",
+      "module": "招聘管理",
+      "method": "GET",
+      "path": "/interview-records",
+      "role": "hr",
+      "issued": [
+        "GET /api/interview-records?candidateId=36"
+      ],
+      "hit": "GET /api/interview-records?candidateId=36",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-058",
+      "module": "招聘管理",
+      "method": "POST",
+      "path": "/interview-records",
+      "role": "hr",
+      "issued": [
+        "POST /api/interview-records"
+      ],
+      "hit": "POST /api/interview-records",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-059",
+      "module": "招聘管理",
+      "method": "GET",
+      "path": "/offers/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/offers/page?current=1&size=10"
+      ],
+      "hit": "GET /api/offers/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-060",
+      "module": "招聘管理",
+      "method": "PUT",
+      "path": "/offers/{id}/send",
+      "role": "hr",
+      "issued": [
+        "PUT /api/offers/999999/send"
+      ],
+      "hit": "PUT /api/offers/999999/send",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "Offer 不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-061",
+      "module": "招聘管理",
+      "method": "PUT",
+      "path": "/offers/{id}/status",
+      "role": "hr",
+      "issued": [
+        "PUT /api/offers/999999/status"
+      ],
+      "hit": "PUT /api/offers/999999/status",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "Offer 不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-062",
+      "module": "培训管理",
+      "method": "GET",
+      "path": "/training-plans/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/training-plans/page?current=1&size=10"
+      ],
+      "hit": "GET /api/training-plans/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-063",
+      "module": "培训管理",
+      "method": "POST",
+      "path": "/training-plans",
+      "role": "hr",
+      "issued": [
+        "POST /api/training-plans"
+      ],
+      "hit": "POST /api/training-plans",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-064",
+      "module": "培训管理",
+      "method": "POST",
+      "path": "/training-plans/{id}/enroll",
+      "role": "probeEmp",
+      "issued": [
+        "POST /api/training-plans/15/enroll"
+      ],
+      "hit": "POST /api/training-plans/15/enroll",
+      "extras": [],
+      "httpStatus": 400,
+      "bizOk": false,
+      "message": "该计划未开放报名",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-065",
+      "module": "培训管理",
+      "method": "GET",
+      "path": "/training/my",
+      "role": "demo",
+      "issued": [
+        "GET /api/training/my"
+      ],
+      "hit": "GET /api/training/my",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-066",
+      "module": "绩效考核",
+      "method": "GET",
+      "path": "/performance-plans/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/performance-plans/page?current=1&size=10"
+      ],
+      "hit": "GET /api/performance-plans/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-067",
+      "module": "绩效考核",
+      "method": "POST",
+      "path": "/performance-plans",
+      "role": "hr",
+      "issued": [
+        "POST /api/performance-plans"
+      ],
+      "hit": "POST /api/performance-plans",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-068",
+      "module": "绩效考核",
+      "method": "PUT",
+      "path": "/performance-plans/{id}/publish",
+      "role": "hr",
+      "issued": [
+        "PUT /api/performance-plans/13/publish"
+      ],
+      "hit": "PUT /api/performance-plans/13/publish",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-069",
+      "module": "绩效考核",
+      "method": "GET",
+      "path": "/performance-records/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/performance-records/page?current=1&size=10"
+      ],
+      "hit": "GET /api/performance-records/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-070",
+      "module": "绩效考核",
+      "method": "PUT",
+      "path": "/performance-records/{id}/self-score",
+      "role": "probeEmp",
+      "issued": [
+        "PUT /api/performance-records/999999/self-score"
+      ],
+      "hit": "PUT /api/performance-records/999999/self-score",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "考核记录不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-071",
+      "module": "绩效考核",
+      "method": "PUT",
+      "path": "/performance-records/{id}/leader-score",
+      "role": "hr",
+      "issued": [
+        "PUT /api/performance-records/999999/leader-score"
+      ],
+      "hit": "PUT /api/performance-records/999999/leader-score",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "考核记录不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-072",
+      "module": "绩效考核",
+      "method": "PUT",
+      "path": "/performance-records/{id}/confirm",
+      "role": "hr",
+      "issued": [
+        "PUT /api/performance-records/999999/confirm"
+      ],
+      "hit": "PUT /api/performance-records/999999/confirm",
+      "extras": [],
+      "httpStatus": 404,
+      "bizOk": false,
+      "message": "考核记录不存在",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-073",
+      "module": "通知公告",
+      "method": "GET",
+      "path": "/notices/page",
+      "role": "hr",
+      "issued": [
+        "GET /api/notices/page?current=1&size=10"
+      ],
+      "hit": "GET /api/notices/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-074",
+      "module": "通知公告",
+      "method": "POST",
+      "path": "/notices",
+      "role": "hr",
+      "issued": [
+        "POST /api/notices"
+      ],
+      "hit": "POST /api/notices",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-075",
+      "module": "通知公告",
+      "method": "PUT",
+      "path": "/notices/{id}/publish",
+      "role": "hr",
+      "issued": [
+        "PUT /api/notices/38/publish"
+      ],
+      "hit": "PUT /api/notices/38/publish",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-076",
+      "module": "通知公告",
+      "method": "PUT",
+      "path": "/notices/{id}/offline",
+      "role": "hr",
+      "issued": [
+        "PUT /api/notices/38/offline"
+      ],
+      "hit": "PUT /api/notices/38/offline",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-077",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/users/page",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/users/page?current=1&size=10"
+      ],
+      "hit": "GET /api/sys/users/page?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-078",
+      "module": "系统管理",
+      "method": "POST",
+      "path": "/sys/users",
+      "role": "admin",
+      "issued": [
+        "POST /api/sys/users"
+      ],
+      "hit": "POST /api/sys/users",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 2,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-079",
+      "module": "系统管理",
+      "method": "PUT",
+      "path": "/sys/users/{id}",
+      "role": "admin",
+      "issued": [
+        "PUT /api/sys/users/132"
+      ],
+      "hit": "PUT /api/sys/users/132",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-080",
+      "module": "系统管理",
+      "method": "PUT",
+      "path": "/sys/users/{id}/password/reset",
+      "role": "admin",
+      "issued": [
+        "PUT /api/sys/users/132/password/reset"
+      ],
+      "hit": "PUT /api/sys/users/132/password/reset",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-081",
+      "module": "系统管理",
+      "method": "DELETE",
+      "path": "/sys/users/{id}",
+      "role": "admin",
+      "issued": [
+        "DELETE /api/sys/users/132"
+      ],
+      "hit": "DELETE /api/sys/users/132",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-082",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/roles",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/roles"
+      ],
+      "hit": "GET /api/sys/roles",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-083",
+      "module": "系统管理",
+      "method": "POST",
+      "path": "/sys/roles",
+      "role": "admin",
+      "issued": [
+        "POST /api/sys/roles"
+      ],
+      "hit": "POST /api/sys/roles",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-084",
+      "module": "系统管理",
+      "method": "PUT",
+      "path": "/sys/roles/{id}",
+      "role": "admin",
+      "issued": [
+        "PUT /api/sys/roles/27"
+      ],
+      "hit": "PUT /api/sys/roles/27",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-085",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/dict-types",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/dict-types"
+      ],
+      "hit": "GET /api/sys/dict-types",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 2,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-086",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/dict-types/{typeId}/items",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/dict-types/1/items"
+      ],
+      "hit": "GET /api/sys/dict-types/1/items",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-087",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/configs",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/configs"
+      ],
+      "hit": "GET /api/sys/configs",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-088",
+      "module": "系统管理",
+      "method": "PUT",
+      "path": "/sys/configs/{id}",
+      "role": "admin",
+      "issued": [
+        "PUT /api/sys/configs/129"
+      ],
+      "hit": "PUT /api/sys/configs/129",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-089",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/logs/login",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/logs/login?current=1&size=10"
+      ],
+      "hit": "GET /api/sys/logs/login?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-090",
+      "module": "系统管理",
+      "method": "GET",
+      "path": "/sys/logs/oper",
+      "role": "admin",
+      "issued": [
+        "GET /api/sys/logs/oper?current=1&size=10"
+      ],
+      "hit": "GET /api/sys/logs/oper?current=1&size=10",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    },
+    {
+      "id": "FE-091",
+      "module": "认证与令牌",
+      "method": "POST",
+      "path": "/auth/logout",
+      "role": "admin",
+      "issued": [
+        "POST /api/auth/logout"
+      ],
+      "hit": "POST /api/auth/logout",
+      "extras": [],
+      "httpStatus": 200,
+      "bizOk": true,
+      "message": "",
+      "issuedReal": true,
+      "serverSeen": 1,
+      "clientIssued": true,
+      "reachedBackend": true
+    }
+  ],
+  "finishedAt": "2026-09-17T07:01:51.066Z",
+  "summary": {
+    "total": 91,
+    "issuedReal": 91,
+    "notIssued": 0,
+    "http200": 82,
+    "clientIssued": 91,
+    "serverSeen": 91,
+    "reachedBackend": 91,
+    "notReached": 0
+  },
+  "probe": {
+    "handledTodoIds": [
+      10
+    ],
+    "fixture": {
+      "fixtureEmpId": 1096,
+      "createEmpHttp": 200,
+      "createUserHttp": 200,
+      "probeLogin": "OK"
+    },
+    "fixtureEmpId": 1096,
+    "caseEmpId": 1097,
+    "probeDeptId": 30,
+    "probePositionId": 25
+  },
+  "log": [
+    "预登录：admin=OK lina=OK shenjianguo=OK linwanqing=OK",
+    "固件：empId=1001 dept=13 pos=15 lockedMonth=1 dictType=1",
+    "探针员工/账号：{\"fixtureEmpId\":1096,\"createEmpHttp\":200,\"createUserHttp\":200,\"probeLogin\":\"OK\"}",
+    "ISSUED FE-001 POST /auth/login → HTTP 200",
+    "ISSUED FE-002 GET /auth/me → HTTP 200",
+    "ISSUED FE-003 GET /dashboard/summary → HTTP 200",
+    "ISSUED FE-004 GET /dashboard/todos → HTTP 200",
+    "ISSUED FE-005 GET /dashboard/notices → HTTP 200",
+    "ISSUED FE-006 GET /dashboard/charts → HTTP 200",
+    "ISSUED FE-007 PUT /dashboard/todos/{id}/handle → HTTP 200",
+    "ISSUED FE-008 GET /depts/tree → HTTP 200",
+    "ISSUED FE-009 GET /depts → HTTP 200",
+    "ISSUED FE-010 POST /depts → HTTP 200",
+    "ISSUED FE-011 PUT /depts/{id} → HTTP 200",
+    "ISSUED FE-012 DELETE /depts/{id} → HTTP 200",
+    "ISSUED FE-013 GET /positions → HTTP 200",
+    "ISSUED FE-014 POST /positions → HTTP 200",
+    "ISSUED FE-015 PUT /positions/{id} → HTTP 200",
+    "ISSUED FE-016 GET /employees/page → HTTP 200",
+    "ISSUED FE-017 GET /employees/{id} → HTTP 200",
+    "ISSUED FE-018 POST /employees → HTTP 200",
+    "ISSUED FE-019 PUT /employees/{id} → HTTP 200",
+    "ISSUED FE-020 PUT /employees/{id}/status → HTTP 200",
+    "ISSUED FE-021 GET /employees/{id}/changes → HTTP 200",
+    "ISSUED FE-022 POST /employee-changes → HTTP 200",
+    "ISSUED FE-023 GET /employee-changes/page → HTTP 200",
+    "ISSUED FE-024 GET /employee-contracts/page → HTTP 200",
+    "ISSUED FE-025 POST /employee-contracts → HTTP 200",
+    "ISSUED FE-026 DELETE /employees/{id} → HTTP 200",
+    "ISSUED FE-027 GET /attendance/today → HTTP 200",
+    "ISSUED FE-028 POST /attendance/checkin → HTTP 200",
+    "ISSUED FE-029 POST /attendance/checkout → HTTP 200",
+    "ISSUED FE-030 GET /attendance/records → HTTP 200",
+    "ISSUED FE-031 GET /leave-requests/page → HTTP 200",
+    "ISSUED FE-032 POST /leave-requests → HTTP 200",
+    "ISSUED FE-033 PUT /leave-requests/{id}/approve → HTTP 200",
+    "ISSUED FE-034 GET /leave-balances/my → HTTP 200",
+    "ISSUED FE-035 GET /overtime-requests/page → HTTP 200",
+    "ISSUED FE-036 POST /overtime-requests → HTTP 200",
+    "ISSUED FE-037 PUT /overtime-requests/{id}/approve → HTTP 200",
+    "ISSUED FE-038 GET /business-trips/page → HTTP 200",
+    "ISSUED FE-039 POST /business-trips → HTTP 200",
+    "ISSUED FE-040 PUT /business-trips/{id}/approve → HTTP 200",
+    "ISSUED FE-041 GET /attendance-months/page → HTTP 200",
+    "ISSUED FE-042 PUT /attendance-months/{id}/lock → HTTP 400 | 该考勤月报已封账，禁止修改（BR-04-03）",
+    "ISSUED FE-043 GET /salary-standards/page → HTTP 200",
+    "ISSUED FE-044 POST /salary-standards → HTTP 200",
+    "ISSUED FE-045 GET /salary-records/page → HTTP 200",
+    "ISSUED FE-046 POST /salary-records/calculate → HTTP 200",
+    "ISSUED FE-047 PUT /salary-records/{id}/review → HTTP 404 | 薪资记录不存在",
+    "ISSUED FE-048 PUT /salary-records/{id}/pay → HTTP 404 | 薪资记录不存在",
+    "ISSUED FE-049 GET /salary/payslips/my → HTTP 200",
+    "ISSUED FE-050 GET /salary/payslips/{recordId}/items → HTTP 200",
+    "ISSUED FE-051 GET /recruit-requests/page → HTTP 200",
+    "ISSUED FE-052 POST /recruit-requests → HTTP 200",
+    "ISSUED FE-053 PUT /recruit-requests/{id}/approve → HTTP 200",
+    "ISSUED FE-054 GET /candidates/page → HTTP 200",
+    "ISSUED FE-055 POST /candidates → HTTP 200",
+    "ISSUED FE-056 PUT /candidates/{id}/stage → HTTP 200",
+    "ISSUED FE-057 GET /interview-records → HTTP 200",
+    "ISSUED FE-058 POST /interview-records → HTTP 200",
+    "ISSUED FE-059 GET /offers/page → HTTP 200",
+    "ISSUED FE-060 PUT /offers/{id}/send → HTTP 404 | Offer 不存在",
+    "ISSUED FE-061 PUT /offers/{id}/status → HTTP 404 | Offer 不存在",
+    "ISSUED FE-062 GET /training-plans/page → HTTP 200",
+    "ISSUED FE-063 POST /training-plans → HTTP 200",
+    "ISSUED FE-064 POST /training-plans/{id}/enroll → HTTP 400 | 该计划未开放报名",
+    "ISSUED FE-065 GET /training/my → HTTP 200",
+    "ISSUED FE-066 GET /performance-plans/page → HTTP 200",
+    "ISSUED FE-067 POST /performance-plans → HTTP 200",
+    "ISSUED FE-068 PUT /performance-plans/{id}/publish → HTTP 200",
+    "ISSUED FE-069 GET /performance-records/page → HTTP 200",
+    "ISSUED FE-070 PUT /performance-records/{id}/self-score → HTTP 404 | 考核记录不存在",
+    "ISSUED FE-071 PUT /performance-records/{id}/leader-score → HTTP 404 | 考核记录不存在",
+    "ISSUED FE-072 PUT /performance-records/{id}/confirm → HTTP 404 | 考核记录不存在",
+    "ISSUED FE-073 GET /notices/page → HTTP 200",
+    "ISSUED FE-074 POST /notices → HTTP 200",
+    "ISSUED FE-075 PUT /notices/{id}/publish → HTTP 200",
+    "ISSUED FE-076 PUT /notices/{id}/offline → HTTP 200",
+    "ISSUED FE-077 GET /sys/users/page → HTTP 200",
+    "ISSUED FE-078 POST /sys/users → HTTP 200",
+    "ISSUED FE-079 PUT /sys/users/{id} → HTTP 200",
+    "ISSUED FE-080 PUT /sys/users/{id}/password/reset → HTTP 200",
+    "ISSUED FE-081 DELETE /sys/users/{id} → HTTP 200",
+    "ISSUED FE-082 GET /sys/roles → HTTP 200",
+    "ISSUED FE-083 POST /sys/roles → HTTP 200",
+    "ISSUED FE-084 PUT /sys/roles/{id} → HTTP 200",
+    "ISSUED FE-085 GET /sys/dict-types → HTTP 200",
+    "ISSUED FE-086 GET /sys/dict-types/{typeId}/items → HTTP 200",
+    "ISSUED FE-087 GET /sys/configs → HTTP 200",
+    "ISSUED FE-088 PUT /sys/configs/{id} → HTTP 200",
+    "ISSUED FE-089 GET /sys/logs/login → HTTP 200",
+    "ISSUED FE-090 GET /sys/logs/oper → HTTP 200",
+    "ISSUED FE-091 POST /auth/logout → HTTP 200"
+  ],
+  "proxyLog": {
+    "file": "D:\\Workspace\\enterprise-hr-management-frontend\\verify\\proxy-access.jsonl",
+    "uniqueMethodPath": 91,
+    "totalRequests": 101
+  }
+}

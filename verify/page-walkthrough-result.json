@@ -1,0 +1,702 @@
+{
+  "base": "http://127.0.0.1:5173",
+  "rolesVisited": [
+    "ROLE_ADMIN",
+    "ROLE_HR",
+    "ROLE_EMPLOYEE"
+  ],
+  "loginLogs": [
+    {
+      "role": "ROLE_ADMIN",
+      "account": "admin",
+      "ok": true,
+      "code": 200,
+      "user": "admin"
+    },
+    {
+      "role": "ROLE_HR",
+      "account": "lina",
+      "ok": true,
+      "code": 200,
+      "user": "lina"
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "account": "linwanqing",
+      "ok": true,
+      "code": 200,
+      "user": "linwanqing"
+    }
+  ],
+  "navigations": 34,
+  "pagesWithCalls": 34,
+  "landedOn404": [
+    {
+      "role": "ROLE_EMPLOYEE",
+      "page": "/employee/profile",
+      "landed": "/404"
+    }
+  ],
+  "totalCalls": 86,
+  "uniqueApis": 34,
+  "confirmedByProxy": 86,
+  "missingFromProxy": [],
+  "apis": [
+    "GET /api/attendance-months/page",
+    "GET /api/attendance/records",
+    "GET /api/attendance/today",
+    "GET /api/auth/me",
+    "GET /api/business-trips/page",
+    "GET /api/candidates/page",
+    "GET /api/dashboard/charts",
+    "GET /api/dashboard/notices",
+    "GET /api/dashboard/summary",
+    "GET /api/dashboard/todos",
+    "GET /api/depts",
+    "GET /api/depts/tree",
+    "GET /api/employee-changes/page",
+    "GET /api/employee-contracts/page",
+    "GET /api/employees/page",
+    "GET /api/leave-balances/my",
+    "GET /api/leave-requests/page",
+    "GET /api/notices/page",
+    "GET /api/offers/page",
+    "GET /api/overtime-requests/page",
+    "GET /api/performance-plans/page",
+    "GET /api/performance-records/page",
+    "GET /api/positions",
+    "GET /api/recruit-requests/page",
+    "GET /api/salary-records/page",
+    "GET /api/salary-standards/page",
+    "GET /api/salary/payslips/my",
+    "GET /api/sys/configs",
+    "GET /api/sys/dict-types",
+    "GET /api/sys/logs/login",
+    "GET /api/sys/roles",
+    "GET /api/sys/users/page",
+    "GET /api/training-plans/page",
+    "GET /api/training/my"
+  ],
+  "detail": [
+    {
+      "role": "ROLE_ADMIN",
+      "label": "首页看板",
+      "path": "/dashboard",
+      "finalPath": "/dashboard",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/dashboard/summary"
+        },
+        {
+          "method": "GET",
+          "path": "/api/dashboard/todos"
+        },
+        {
+          "method": "GET",
+          "path": "/api/dashboard/notices"
+        },
+        {
+          "method": "GET",
+          "path": "/api/dashboard/charts"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "通知公告",
+      "path": "/notices",
+      "finalPath": "/notices",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/notices/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "员工列表",
+      "path": "/employee",
+      "finalPath": "/employee",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employees/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/depts"
+        },
+        {
+          "method": "GET",
+          "path": "/api/positions"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "员工异动",
+      "path": "/employee/changes",
+      "finalPath": "/employee/changes",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employee-changes/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/depts"
+        },
+        {
+          "method": "GET",
+          "path": "/api/positions"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employees/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "员工合同",
+      "path": "/employee/contracts",
+      "finalPath": "/employee/contracts",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employee-contracts/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employees/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "部门管理",
+      "path": "/dept",
+      "finalPath": "/dept",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/depts/tree"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "岗位管理",
+      "path": "/dept/positions",
+      "finalPath": "/dept/positions",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/positions"
+        },
+        {
+          "method": "GET",
+          "path": "/api/depts"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "考勤打卡",
+      "path": "/attendance/checkin",
+      "finalPath": "/attendance/checkin",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/attendance/today"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "请假管理",
+      "path": "/attendance/leave",
+      "finalPath": "/attendance/leave",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/leave-requests/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/leave-balances/my"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "加班管理",
+      "path": "/attendance/overtime",
+      "finalPath": "/attendance/overtime",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/overtime-requests/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "出差管理",
+      "path": "/attendance/trip",
+      "finalPath": "/attendance/trip",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/business-trips/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "考勤月报",
+      "path": "/attendance/monthly",
+      "finalPath": "/attendance/monthly",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/attendance-months/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "工资条",
+      "path": "/salary/payslip",
+      "finalPath": "/salary/payslip",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/salary/payslips/my"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "用户管理",
+      "path": "/system/user",
+      "finalPath": "/system/user",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/users/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/roles"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "角色管理",
+      "path": "/system/role",
+      "finalPath": "/system/role",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/roles"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "数据字典",
+      "path": "/system/dict",
+      "finalPath": "/system/dict",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/dict-types"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "参数配置",
+      "path": "/system/config",
+      "finalPath": "/system/config",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/configs"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_ADMIN",
+      "label": "系统日志",
+      "path": "/system/log",
+      "finalPath": "/system/log",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/sys/logs/login"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "薪资标准",
+      "path": "/salary/standard",
+      "finalPath": "/salary/standard",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/salary-standards/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "薪资核算",
+      "path": "/salary/record",
+      "finalPath": "/salary/record",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/salary-records/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "招聘需求",
+      "path": "/recruit/request",
+      "finalPath": "/recruit/request",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/recruit-requests/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/depts"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "候选人管理",
+      "path": "/recruit/candidate",
+      "finalPath": "/recruit/candidate",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/candidates/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/recruit-requests/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "Offer 管理",
+      "path": "/recruit/offer",
+      "finalPath": "/recruit/offer",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/offers/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "培训计划",
+      "path": "/training/plan",
+      "finalPath": "/training/plan",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/training-plans/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "绩效计划",
+      "path": "/performance/plan",
+      "finalPath": "/performance/plan",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/performance-plans/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "绩效考核",
+      "path": "/performance/record",
+      "finalPath": "/performance/record",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/performance-records/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/performance-plans/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "考勤月报",
+      "path": "/attendance/monthly",
+      "finalPath": "/attendance/monthly",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/attendance-months/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_HR",
+      "label": "员工合同",
+      "path": "/employee/contracts",
+      "finalPath": "/employee/contracts",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employee-contracts/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/employees/page"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "员工档案",
+      "path": "/employee/profile",
+      "finalPath": "/404",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "我的培训",
+      "path": "/training/my",
+      "finalPath": "/training/my",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/training/my"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "我的工资条",
+      "path": "/salary/payslip",
+      "finalPath": "/salary/payslip",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/salary/payslips/my"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "我的打卡",
+      "path": "/attendance/checkin",
+      "finalPath": "/attendance/checkin",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/attendance/today"
+        },
+        {
+          "method": "GET",
+          "path": "/api/attendance/records"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "我的请假",
+      "path": "/attendance/leave",
+      "finalPath": "/attendance/leave",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/leave-requests/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/leave-balances/my"
+        }
+      ]
+    },
+    {
+      "role": "ROLE_EMPLOYEE",
+      "label": "我的考核",
+      "path": "/performance/record",
+      "finalPath": "/performance/record",
+      "calls": [
+        {
+          "method": "GET",
+          "path": "/api/auth/me"
+        },
+        {
+          "method": "GET",
+          "path": "/api/performance-records/page"
+        },
+        {
+          "method": "GET",
+          "path": "/api/performance-plans/page"
+        }
+      ]
+    }
+  ],
+  "proxyLog": {
+    "file": "D:\\Workspace\\enterprise-hr-management-frontend\\verify\\proxy-access.jsonl",
+    "uniqueMethodPath": 35
+  }
+}
